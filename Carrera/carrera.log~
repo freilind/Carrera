@@ -1,0 +1,91 @@
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT idUsuario, rol FROM usuarios WHERE nombreUsuario = 'admin' AND clave = '40bd001563085fc35165329ea1ff5c5ecbdbbeef'
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT genero FROM sexos WHERE idSexo < 5
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT nombres, apellidos, fechaNacimiento FROM atletas WHERE idCedula = 18314133
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT nombreCategoria FROM categorias WHERE idCategoria = 8
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+DEBUG AWT-EventQueue-0 com.crono.vista.FrameEventoInscripcion - java.lang.NumberFormatException: For input string: "23.0"
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT idEvento FROM eventos WHERE nombreEvento = '1° Valida Nacional Triatlon'
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT idParticipante FROM participantes WHERE cedulaId = '18314133' AND eventoId = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT idParticipante FROM participantes WHERE numero = '2' AND eventoId = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, BEGIN TRANSACTION
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, INSERT INTO participantes (cedulaId, eventoId, numero, categoriaId, elite) VALUES ('18314133', 1, '18314133', 8, 0)
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, COMMIT
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT nombres, apellidos, fechaNacimiento FROM atletas WHERE idCedula = 5555555
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT nombreCategoria FROM categorias WHERE idCategoria = 9
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT nombres, apellidos, fechaNacimiento FROM atletas WHERE idCedula = 5555555
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT nombreCategoria FROM categorias WHERE idCategoria = 9
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT idEvento FROM eventos WHERE nombreEvento = '1° Valida Nacional Triatlon'
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT idParticipante FROM participantes WHERE cedulaId = '5555555' AND eventoId = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT idParticipante FROM participantes WHERE numero = '2' AND eventoId = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, BEGIN TRANSACTION
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, INSERT INTO participantes (cedulaId, eventoId, numero, categoriaId, elite) VALUES ('5555555', 1, '5555555', 9, 0)
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, COMMIT
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5bfefcd4, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT idUsuario, rol FROM usuarios WHERE nombreUsuario = 'admin' AND clave = '40bd001563085fc35165329ea1ff5c5ecbdbbeef'
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT genero FROM sexos WHERE idSexo < 5
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombres, apellidos, fechaNacimiento FROM atletas WHERE idCedula = 555555
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombres, apellidos, fechaNacimiento FROM atletas WHERE idCedula = 5555555
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombreCategoria FROM categorias WHERE idCategoria = 9
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombres, apellidos, fechaNacimiento FROM atletas WHERE idCedula = 5555555
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombreCategoria FROM categorias WHERE idCategoria = 9
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+DEBUG AWT-EventQueue-0 com.crono.vista.FrameEventoInscripcion - java.lang.NumberFormatException: For input string: "i"
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT idEvento FROM eventos WHERE nombreEvento = '1° Valida Nacional Triatlon'
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT idParticipante FROM participantes WHERE cedulaId = '5555555' AND eventoId = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT idParticipante FROM participantes WHERE numero = '2' AND eventoId = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombres, apellidos, fechaNacimiento FROM atletas WHERE idCedula = 55555
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT idEvento FROM eventos WHERE nombreEvento = '1° Valida Nacional Triatlon'
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT idParticipante FROM participantes WHERE cedulaId = '555555' AND eventoId = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT idParticipante FROM participantes WHERE numero = '3' AND eventoId = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, BEGIN TRANSACTION
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, INSERT INTO participantes (cedulaId, eventoId, numero, categoriaId, elite) VALUES ('555555', 1, '3', 9, 0)
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, COMMIT
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @43f1dc96, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c013bae, SELECT idUsuario, rol FROM usuarios WHERE nombreUsuario = 'admin' AND clave = '40bd001563085fc35165329ea1ff5c5ecbdbbeef'
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c013bae, SELECT genero FROM sexos WHERE idSexo < 5
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c013bae, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c013bae, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c013bae, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c013bae, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c013bae, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c013bae, SELECT nombres, apellidos, fechaNacimiento FROM atletas WHERE idCedula = 555555
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c013bae, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c013bae, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c21a48f, SELECT idUsuario, rol FROM usuarios WHERE nombreUsuario = 'admin' AND clave = '40bd001563085fc35165329ea1ff5c5ecbdbbeef'
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c21a48f, SELECT genero FROM sexos WHERE idSexo < 5
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c21a48f, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c21a48f, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c21a48f, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c21a48f, SELECT nombres, apellidos, fechaNacimiento FROM atletas WHERE idCedula = 555555
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c21a48f, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c21a48f, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c21a48f, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c21a48f, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c21a48f, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c21a48f, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @2c21a48f, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @339ec220, SELECT idUsuario, rol FROM usuarios WHERE nombreUsuario = 'admin' AND clave = '40bd001563085fc35165329ea1ff5c5ecbdbbeef'
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @339ec220, SELECT genero FROM sexos WHERE idSexo < 5
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @339ec220, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @339ec220, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @339ec220, SELECT nombres, apellidos, fechaNacimiento FROM atletas WHERE idCedula = 555555
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @339ec220, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @339ec220, SELECT nombreEvento FROM eventos WHERE habilitado = 1

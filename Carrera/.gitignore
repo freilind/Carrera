@@ -1,0 +1,14 @@
+/bin
+*.class
+*.log
+*.pdf
+*.txt
+*.sql
+*.mwb
+*.bak
+*.properties
+
+# Package Files #
+*.jar
+*.war
+*.ear
