@@ -12,3 +12,9 @@
 *.jar
 *.war
 *.ear
+
+/src/com/crono/controlador/controladorBD/bd/ControladorBD.java
+/src/com/crono/dao/CronoDAO.java
+/src/com/crono/login/Main.java
+/src/com/crono/mail/JavaMail.java
+/src/com/crono/util/EstructuraDB.java
