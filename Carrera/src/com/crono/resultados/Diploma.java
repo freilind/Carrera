@@ -53,7 +53,7 @@ public class Diploma extends PdfPageEventHelper{
         try {
            document.open(); 
           // document.add((crearHeader()));
-           crearCuerpo();
+          // crearCuerpo();
           // JOptionPane.showMessageDialog(null, "Documento Generado Correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Ha Ocurrido un Error Inesperado.","ERROR", JOptionPane.ERROR_MESSAGE);
