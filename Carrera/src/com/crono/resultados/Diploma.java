@@ -20,7 +20,7 @@ public class Diploma extends Pdf{
 
     @SuppressWarnings("unused")
     private PdfWriter writer;
-    private static String titulo[]={"Nombre"," Apellido","Numero", "Categoria","Genero"};
+    private static String titulo[]={"Nombre"," Apellido", "Categoria","Genero"};
     private static float ancho[]={250, 500, 160};
 	private static float anchoRegistro[]={150, 50, 250};
 	private AtletaDTO a;
