@@ -47,7 +47,7 @@ public class Constantes {
 		NUMERO_NO_EXISTE = "N\u00FAmero No Existe.";
 		NUMERO_REGISTRADO = "N\u00FAmero Ya Est\u00E1 Registrado.\n";
 		ESQUEMA_BD = "Se Ha Generado El Esquema De La Base De Datos\nCorrectamente.";
-		RESULTADO = "Resultado Generado Correctamente.\n";
+		RESULTADO = "Documento Generado Correctamente.\n";
 		PARTICIPANTE_REGISTRADO = "Participante Ya Est\u00E1 Registrado.\n";
 		ERROR_ENCRIPTANDO = "No Se Pudo Encriptar el Password";
 		
