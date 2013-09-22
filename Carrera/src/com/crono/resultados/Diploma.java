@@ -22,15 +22,14 @@ public class Diploma extends Pdf{
     private PdfWriter writer;
     private static String titulo[]={"Nombre"," Apellido", "Categoria","Genero"};
     private static float ancho[]={250, 500, 160};
-	private static float anchoRegistro[]={150, 50, 250};
+	private static float anchoRegistro[]={150, 150, 100, 100};
 	private AtletaDTO a;
     private Document document;
 	
 	public Diploma(AtletaDTO a){
-		super("pdf/"+a.getCedula()+".pdf", " ", titulo, anchoRegistro, ancho);
+		super("pdf/diploma/"+a.getCedula()+".pdf", " ", titulo, anchoRegistro, ancho);
 		this.a = a;
-		
-		
+			
 		try {
 			document.open(); 
 			document.add(crearHeader());
@@ -70,11 +69,8 @@ public class Diploma extends Pdf{
     	//pr2.add("Tiempo: "+" "+a.getTiempo());
     	document.add(pr2);
 		return header;
-	    
-    	
+	   
     }//fin crear cuerpo
 	    
-	   
-	
 }
 

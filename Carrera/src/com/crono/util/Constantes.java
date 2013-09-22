@@ -9,7 +9,8 @@ public class Constantes {
 						 ERROR_ESCRITURA, CEDULA, CEDULA_REGISTRADA,CEDULA_NO_REGISTRADA,ACCESO_DENEGADO,
 						 CONFIG_BD, LOOK_FEEL, NINGUN_RESULTADO, CODIGO_AUTORIZACION, 
 						 CODIGO_ERROR, SELECCION_EVENTO, NUMERO_POSITIVO, NUMERO_NO_EXISTE, NUMERO_REGISTRADO,
-						 ESQUEMA_BD, RESULTADO, PARTICIPANTE_REGISTRADO, ERROR_ENCRIPTANDO, PATROCINADOR;
+						 ESQUEMA_BD, RESULTADO, PARTICIPANTE_REGISTRADO, ERROR_ENCRIPTANDO, PATROCINADOR,EVENTO_UNICO,
+						 NO_HAY_EVENTO;
 	
 	public static String E_NOMBRE, E_APELLIDO, E_TELEFONO, E_EMAIL, E_CEDULA, E_SEXO, E_YEARB, E_NUMERO, E_EVENTO, E_BUSCAR_DATOS;
 	
@@ -50,7 +51,8 @@ public class Constantes {
 		RESULTADO = "Documento Generado Correctamente.\n";
 		PARTICIPANTE_REGISTRADO = "Participante Ya Est\u00E1 Registrado.\n";
 		ERROR_ENCRIPTANDO = "No Se Pudo Encriptar el Password";
-		
+		EVENTO_UNICO = "Solo puede Haber Un Evento Habilitado.\nDeshabilite el Evento Actual.";
+		NO_HAY_EVENTO = "No Hay Un Evento Habilitado Para Registrar Tiempos.";
 		
 		E_NOMBRE = "El Nombre Debe Tener Entre 2 y 40 Caracteres.\n";
 		E_APELLIDO = "El Apellido Debe Tener Entre 2 y 40 Caracteres.\n";

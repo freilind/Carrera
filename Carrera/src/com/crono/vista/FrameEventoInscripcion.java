@@ -15,9 +15,8 @@ public class FrameEventoInscripcion {
 	
 	private static final Logger logger = Logger.getLogger(FrameEventoInscripcion.class);
 	private Panel ctpInscripcion;
-	private JTextField txfCedula, txfNombres, txfApellidos, txfCategoria, txfNumero;
+	private JTextField txfCedula, txfNombres, txfApellidos, txfCategoria, txfNumero, txfEvento;
 	private JLabel lblCedula, lblNombres, lblApellidos, lblCategoria, lblEvento, lblNumero, lblElite, lblLogo;
-	private JComboBox<String>  cbxEvento;
 	private JRadioButton rdbtnNo, rdbtnSi;
 	private JButton btnInscribir, btnBorrar, btnListar, btnSalir;
 	private ButtonGroup btgElite;
@@ -80,9 +79,10 @@ public class FrameEventoInscripcion {
 		lblEvento.setFont(Fonts.FONT_LABEL);
 		lblEvento.setBounds(60, 230, 55, 25);
 			
-		cbxEvento = new JComboBox<String>();
-		cbxEvento.setFont(Fonts.FONT_TEXT);
-		cbxEvento.setBounds(140, 228, 200, 28);	
+		txfEvento = new JTextField();
+		txfEvento.setEnabled(false);
+		txfEvento.setFont(Fonts.FONT_TEXT);
+		txfEvento.setBounds(140, 228, 200, 28);	
 				
 		lblElite = new JLabel("Elite");
 		lblElite.setFont(Fonts.FONT_LABEL);
@@ -125,7 +125,7 @@ public class FrameEventoInscripcion {
 		lblLogo.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"logo.png"));
 		lblLogo.setBounds(440, 61, 200, 200);
 		
-		getCbxEvento();
+		getTxfEvento();
 			
 		ctpInscripcion.add(lblCedula);
 		ctpInscripcion.add(txfCedula);
@@ -138,7 +138,7 @@ public class FrameEventoInscripcion {
 		ctpInscripcion.add(lblNumero);
 		ctpInscripcion.add(txfNumero);
 		ctpInscripcion.add(lblEvento);
-		ctpInscripcion.add(cbxEvento);
+		ctpInscripcion.add(txfEvento);
 		ctpInscripcion.add(lblElite);
 		ctpInscripcion.add(rdbtnNo);
 		ctpInscripcion.add(rdbtnSi);
@@ -217,14 +217,14 @@ public class FrameEventoInscripcion {
 	}// fin del constructor
 		
 	
-	private void getCbxEvento() {
-		cbxEvento.removeAllItems();
-		List<String> result = CronoDAO.getEventos();
+	private void getTxfEvento() {
+		txfEvento.setText("");
+		String result = CronoDAO.getEvento();
 		
-		for(String e: result)
-			cbxEvento.addItem(e);
+		if (result.length() > 1)
+			txfEvento.setText(result);
 		
-	}// fin metodo setCbxEvento
+	}// fin metodo getTxfEvento
 	
 	
 	private void buscarDatos() {		
@@ -243,7 +243,6 @@ public class FrameEventoInscripcion {
 			    buscarCategoria(year);
 			}
 		}//fin if 	
-		getCbxEvento();
 	}// fin buscarDatos
 		
 	
@@ -291,7 +290,6 @@ public class FrameEventoInscripcion {
 		if(categoria != null)
 			txfCategoria.setText(categoria);
 		
-		getCbxEvento();
 	}// buscarCategoria
 
 
@@ -329,7 +327,7 @@ public class FrameEventoInscripcion {
     		msg.append(Constantes.NUMERO_POSITIVO);
     	}
     		
-    	if(cbxEvento.getSelectedIndex() == 0)
+    	if(txfEvento.getText().length() < 3)
     		msg.append(Constantes.E_EVENTO);
     	
     	if(txfCedula.isEnabled())
@@ -340,9 +338,9 @@ public class FrameEventoInscripcion {
     	if(!msg2.isEmpty()) {
     		JOptionPane.showMessageDialog(null, msg, "ERROR", JOptionPane.ERROR_MESSAGE);
     	}else { 
-    		idEvento = CronoDAO.getIdEvento((String)cbxEvento.getSelectedItem());
+    		idEvento = CronoDAO.getIdEvento(txfEvento.getText());
     		logger.info(idEvento);
-    		if (!CronoDAO.validarParticipantexEvnto(txfCedula.getText().trim(), idEvento)) {		
+    		if (!CronoDAO.validarParticipantexEvento(txfCedula.getText().trim(), idEvento)) {		
 				if (!CronoDAO.validarNumeroxEvento(txfNumero.getText().trim(), idEvento)) {
 					enviarContenido();
 				}else { 
@@ -353,7 +351,7 @@ public class FrameEventoInscripcion {
 				JOptionPane.showMessageDialog(null,Constantes.PARTICIPANTE_REGISTRADO, "ERROR",JOptionPane.ERROR_MESSAGE);
 			}//fin if 
     	}
-    	getCbxEvento();
+    	
 	}//fin validar campos
 	
 	
@@ -397,11 +395,9 @@ public class FrameEventoInscripcion {
 	    	txfCedula.setText("");
 	    	txfCategoria.setText("");
 	    	txfNumero.setText("");
-			cbxEvento.setSelectedIndex(0);
 			rdbtnSi.setSelected(false);
 			rdbtnNo.setSelected(true);
 			colorText();
-			getCbxEvento();
 	 }//fin borrar contenido
 	 
 	 public void salir() {

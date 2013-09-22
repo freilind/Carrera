@@ -57,7 +57,7 @@ public class Pdf extends PdfPageEventHelper{
 	protected PdfPTable crearHeader()throws Exception{
 		
 		header=new PdfPTable(ancho);
-	    	cell = new PdfPCell (new Paragraph (Constantes.PATROCINADOR+"\n"+CronoDAO.getEventos().get(0)+"\n"+new SimpleDateFormat("dd 'de' MMMM 'de' yyyy ' ' h:mm a", new Locale("es","ve")).format(new Date()).toUpperCase()));
+	    	cell = new PdfPCell (new Paragraph (Constantes.PATROCINADOR+"\n"+CronoDAO.getEvento()+"\n"+new SimpleDateFormat("dd 'de' MMMM 'de' yyyy ' ' h:mm a", new Locale("es","ve")).format(new Date()).toUpperCase()));
 	    	cell.setColspan (ancho.length);
 	    	cell.setHorizontalAlignment (Element.ALIGN_LEFT);
 	    	cell.setPadding (5.0f);

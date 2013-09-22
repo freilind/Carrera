@@ -75,7 +75,7 @@ public class Categorias extends PdfPageEventHelper {
     private Chapter crearHeader(int cat) throws Exception{
 		Chapter ch=new Chapter(cat);
 			header=new PdfPTable(ancho);
-	    	cell = new PdfPCell (new Paragraph (Constantes.PATROCINADOR+"\n"+CronoDAO.getEventos().get(0)+"\n"+new SimpleDateFormat("dd 'de' MMMM 'de' yyyy ' ' h:mm a", new Locale("es","ve")).format(new Date()).toUpperCase()));
+	    	cell = new PdfPCell (new Paragraph (Constantes.PATROCINADOR+"\n"+CronoDAO.getEvento()+"\n"+new SimpleDateFormat("dd 'de' MMMM 'de' yyyy ' ' h:mm a", new Locale("es","ve")).format(new Date()).toUpperCase()));
 	    	cell.setColspan (3);
 	    	cell.setHorizontalAlignment (Element.ALIGN_LEFT);
 	    	cell.setPadding (5.0f);

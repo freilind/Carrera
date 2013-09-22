@@ -2,7 +2,6 @@ package com.crono.vista;
 
 import java.awt.Color;
 import java.awt.event.*;
-import java.util.List;
 import javax.swing.*;
 import org.apache.log4j.Logger;
 
@@ -13,11 +12,10 @@ public class FrameEventoValida {
 	
 	private static final Logger logger = Logger.getLogger(FrameEventoValida.class);
 	private Panel ctpValida;
-	private JTextField txfNombre;
+	private JTextField txfNombre, txfEvento;
 	private JLabel lblNombre, lblCrear, lblDeshabilitar, lblEvento, lblLogo;
 	private JButton btnCrear, btnBorrar, btnDesh, btnSalir;
 	private JSeparator separator;
-	private JComboBox<String> cbxEvento;
 	private Lectura lec;
 	
 	public FrameEventoValida() {
@@ -61,9 +59,10 @@ public class FrameEventoValida {
 		lblEvento.setFont(Fonts.FONT_LABEL);
 		lblEvento.setBounds(60, 240, 50, 25);
 		
-		cbxEvento = new JComboBox<String>();
-		cbxEvento.setFont(Fonts.FONT_TEXT);
-		cbxEvento.setBounds(140, 238, 250, 28);
+		txfEvento = new JTextField();
+		txfEvento.setEnabled(false);
+		txfEvento.setFont(Fonts.FONT_TEXT);
+		txfEvento.setBounds(140, 238, 250, 28);
 		
 		btnDesh = new JButton("Deshabilitar");
 		btnDesh.setFont(Fonts.FONT_BOTON);
@@ -78,7 +77,7 @@ public class FrameEventoValida {
 		lblLogo.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"logo.png"));
 		lblLogo.setBounds(440, 61, 200, 200);
 		
-		setCbxEvento();
+		getTxfEvento();
 			
 		ctpValida.add(lblCrear);
 		ctpValida.add(lblNombre);
@@ -86,7 +85,7 @@ public class FrameEventoValida {
 		ctpValida.add(separator);
 		ctpValida.add(lblDeshabilitar);
 		ctpValida.add(lblEvento);
-		ctpValida.add(cbxEvento);	
+		ctpValida.add(txfEvento);	
 		ctpValida.add(btnCrear);
 		ctpValida.add(btnBorrar);
 		ctpValida.add(btnDesh);
@@ -153,19 +152,23 @@ public class FrameEventoValida {
 	}//fin del constructor
 	
 	
-	private void setCbxEvento() {
-		cbxEvento.removeAllItems();
-		List<String> eventos = CronoDAO.getEventos();
-		logger.info(eventos);
-		for(String e: eventos)
-			cbxEvento.addItem(e);		
-			
-	}// fin metodo setCbxEvento
+	private void getTxfEvento() {
+		txfEvento.setText("");
+		String result = CronoDAO.getEvento();
+		
+		if (result.length() > 1)
+			txfEvento.setText(result);
+		
+	}// fin metodo getTxfEvento
 	
 
 	private void validarCampos() {
 		if (txfNombre.getText().trim().length() > 2 && txfNombre.getText().trim().length() < 100) {
-			registrarEvento();
+			if(txfEvento.getText().length() < 1){
+				registrarEvento();
+			}else{
+				JOptionPane.showMessageDialog(null, Constantes.EVENTO_UNICO, "ERROR", JOptionPane.ERROR_MESSAGE);
+			}
 		}else {
 			JOptionPane.showMessageDialog(null, Constantes.CAMPO_OBLIGATORIO, "ERROR", JOptionPane.ERROR_MESSAGE);
 		}		
@@ -176,8 +179,8 @@ public class FrameEventoValida {
 		
 		if(CronoDAO.registrarEvento(txfNombre.getText())) {
     		JOptionPane.showMessageDialog(null, "Evento Registrado.");
-    		setCbxEvento();
 		    borrarContenido();
+		    getTxfEvento();
     	}
 		  			
 	}//fin enviar contenido
@@ -185,7 +188,7 @@ public class FrameEventoValida {
 
 	private void borrarContenido() {
 		txfNombre.setText("");	
-		cbxEvento.setSelectedIndex(0);
+		txfEvento.setText("");
 	}
 	
 
@@ -194,7 +197,7 @@ public class FrameEventoValida {
 		 String codR="";
 		 codR=lec.leerString("Ingrese C\u00F3digo Autorizaci\u00F3n");
 		 if(Constantes.CODIGO_AUTORIZACION.equals(codR)) {
-			if(cbxEvento.getSelectedIndex() != 0) {
+			if(txfEvento.getText().length() > 2) {
 				enviarDesh();
 			}else {
 				JOptionPane.showMessageDialog(null, Constantes.SELECCION_EVENTO,"ERROR", JOptionPane.ERROR_MESSAGE);
@@ -207,9 +210,9 @@ public class FrameEventoValida {
 
 	private void enviarDesh() {
 		
-		if(CronoDAO.deshabilitarEvento((String) cbxEvento.getSelectedItem())) {
+		if(CronoDAO.deshabilitarEvento(txfEvento.getText())) {
     		JOptionPane.showMessageDialog(null, "Evento Deshabilitado.");
-    		setCbxEvento();
+    		getTxfEvento();
 		    borrarContenido();
     	}	 	  	
 	}//fin enviarDesh

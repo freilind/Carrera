@@ -92,13 +92,18 @@ public class FrameCronometro implements Runnable, ActionListener{
 
 	
 	public void run(){
+		
 		long tiempoInicio = System.currentTimeMillis();
+		if(CronoDAO.isEventoFecha()){
+			CronoDAO.setEventoFecha(tiempoInicio);
+		}
+		
 		txfNumero.setEnabled(true);
 		try{
 			while( cronometroActivo ){		
 				Thread.sleep(40);
 				long tiempoActual = System.currentTimeMillis();
-				ponerTiempo(tiempoActual - tiempoInicio - 72000000);
+				setTiempoCronometro(tiempoActual - tiempoInicio - 72_000_000);
 			}//fin del while
 			
 		}catch(Exception ex){
@@ -110,7 +115,7 @@ public class FrameCronometro implements Runnable, ActionListener{
 	}//fin run
 	
 	
-	private void ponerTiempo(long aTiempo)  {
+	private void setTiempoCronometro(long aTiempo)  {
 		tmpSDF = new SimpleDateFormat("HH:mm:ss:SSS");
 		String tmpText = tmpSDF.format(new Date(aTiempo));
 		lblTiempo.setText(tmpText);
@@ -130,57 +135,62 @@ public class FrameCronometro implements Runnable, ActionListener{
 	  
 	 //Iniciar el cronometro poniendo cronometroActivo 
 	 //en verdadero para que entre en el while
-	 public void iniciarCronometro(){
-		  cronometroActivo = true;
-		  btnIniciar.setEnabled(false);
-		  hilo = new Thread( this );
-		  hilo.start();
-	 }
+	public void iniciarCronometro(){
+		
+		if (CronoDAO.getEvento().length() > 2){
+			cronometroActivo = true;
+			btnIniciar.setEnabled(false);
+			hilo = new Thread( this );
+			hilo.start();
+		}else{
+			JOptionPane.showMessageDialog(null,Constantes.NO_HAY_EVENTO, "ERROR", JOptionPane.ERROR_MESSAGE);
+		}
+	 }//fin iniciarCronometro
 	 
 	  
 	 //Esto es para parar el cronometro
-	 public void pararCronometro(){
-		 lec = new Lectura();
-		 String codR="";
-		 codR=lec.leerString("Ingrese C\u00F3digo Reinicio");
-		 if(codR.equals(Constantes.CODIGO_AUTORIZACION)) {
+	public void pararCronometro(){
+		lec = new Lectura();
+		String codR="";
+		codR=lec.leerString("Ingrese C\u00F3digo Reinicio");
+		if(codR.equals(Constantes.CODIGO_AUTORIZACION)) {
 			cronometroActivo = false;
 			txfNumero.setText("");
 			txfNumero.setEnabled(false);
 		 	btnIniciar.setEnabled(true);
-		 }else {
-			 JOptionPane.showMessageDialog(null, Constantes.CODIGO_ERROR,"ERROR", JOptionPane.ERROR_MESSAGE);
-		 }
-	 }//fin parar cronometro
+		}else {
+			JOptionPane.showMessageDialog(null, Constantes.CODIGO_ERROR,"ERROR", JOptionPane.ERROR_MESSAGE);
+		}
+	}//fin parar cronometro
 
 
-	 public void registrarNumero() {
-		 boolean flag=false;
-		 numero=0;
-		 try {
-			 numero=Integer.parseInt(txfNumero.getText());	 
-			 if(numero > 0) {
-				 flag=true;
-			 }else {
-				 JOptionPane.showMessageDialog(null, Constantes.NUMERO_POSITIVO,"ERROR", JOptionPane.ERROR_MESSAGE);
-				 flag=false;
-				 txfNumero.setText("");
-			 }
-		 }catch (Exception ex) {
-			 flag=false;
-			 logger.debug(ex);
-			 JOptionPane.showMessageDialog(null, Constantes.NUMERO_POSITIVO,"ERROR", JOptionPane.ERROR_MESSAGE);
-			 txfNumero.setText("");
-		 }//fin try
+	public void registrarNumero() {
+		boolean flag=false;
+		numero=0;
+		try {
+			numero=Integer.parseInt(txfNumero.getText());	 
+			if(numero > 0) {
+				flag=true;
+			}else {
+				JOptionPane.showMessageDialog(null, Constantes.NUMERO_POSITIVO,"ERROR", JOptionPane.ERROR_MESSAGE);
+				flag=false;
+				txfNumero.setText("");
+			}
+		}catch (Exception ex) {
+			flag=false;
+			logger.debug(ex);
+			JOptionPane.showMessageDialog(null, Constantes.NUMERO_POSITIVO,"ERROR", JOptionPane.ERROR_MESSAGE);
+			txfNumero.setText("");
+		}//fin try
 		 
-		 if (flag) {
+		if (flag) {
 			if (CronoDAO.numeroExiste(txfNumero.getText()) && CronoDAO.numeroRegistrado(txfNumero.getText())) {
 				CronoDAO.registrarTiempo(txfNumero.getText(), lblTiempo.getText());
 				txfNumero.setText("");
 			}//fin if numeroExiste
 		}//fin if flag
 		 
-	 }//fin registrar numero
+	}//fin registrar numero
 	 
 	 
 }//fin clase
