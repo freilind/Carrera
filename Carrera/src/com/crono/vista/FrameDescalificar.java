@@ -184,7 +184,7 @@ public class FrameDescalificar extends JFrame{
     
     private void  descalificarAtleta() {
     	if(validarNumero()){
-	    	if(CronoDAO.numeroExiste(txfDescalificar.getText())) {
+	    	if(CronoDAO.isNumeroExiste(txfDescalificar.getText())) {
 	    		CronoDAO.descalificarAtleta(txfDescalificar.getText());
 	    	}else {
 	    		JOptionPane.showMessageDialog(null, Constantes.NUMERO_NO_EXISTE, "ERROR",JOptionPane.ERROR_MESSAGE);

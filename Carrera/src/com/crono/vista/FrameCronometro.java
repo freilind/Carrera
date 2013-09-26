@@ -24,6 +24,7 @@ public class FrameCronometro implements Runnable, ActionListener{
 	private JTextField txfNumero;
 	private int numero;
 	private SimpleDateFormat tmpSDF;
+	private long tiempoActual;
 	
 	public FrameCronometro() {
 		ctpCrono = new Panel();	
@@ -102,7 +103,7 @@ public class FrameCronometro implements Runnable, ActionListener{
 		try{
 			while( cronometroActivo ){		
 				Thread.sleep(40);
-				long tiempoActual = System.currentTimeMillis();
+					tiempoActual = System.currentTimeMillis();
 				setTiempoCronometro(tiempoActual - tiempoInicio - 72_000_000);
 			}//fin del while
 			
@@ -184,8 +185,8 @@ public class FrameCronometro implements Runnable, ActionListener{
 		}//fin try
 		 
 		if (flag) {
-			if (CronoDAO.numeroExiste(txfNumero.getText()) && CronoDAO.numeroRegistrado(txfNumero.getText())) {
-				CronoDAO.registrarTiempo(txfNumero.getText(), lblTiempo.getText());
+			if (CronoDAO.isNumeroExiste(txfNumero.getText()) && !CronoDAO.isNumeroRegistrado(txfNumero.getText())) {
+				CronoDAO.registrarTiempo(txfNumero.getText(), tiempoActual, lblTiempo.getText());
 				txfNumero.setText("");
 			}//fin if numeroExiste
 		}//fin if flag
