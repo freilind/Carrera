@@ -188,7 +188,6 @@ public class FrameEventoValida {
 
 	private void borrarContenido() {
 		txfNombre.setText("");	
-		txfEvento.setText("");
 	}
 	
 

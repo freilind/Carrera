@@ -24,11 +24,23 @@ public class ListarAtletas extends DefaultTableModel {
 	private int [] anchoColumnas={80, 175, 180, 80, 80, 120, 150, 65};
     private String [] nombreColumnas={"C\u00E9dula","Nombres","Apellidos","Sexo", "A\u00F1o Nac.", "Tel\u00E9fono", "Email", "Discap."};
 
-    public ListarAtletas() {
-    	
+    public ListarAtletas() {   	
     	numFilas = CronoDAO.numeroFilas("atletas");
     	logger.info(numFilas);
-		this.setColumnIdentifiers(this.nombreColumnas);
+		listarAtletas();
+		getAtletas();
+    }//fin del constructor
+    
+    public ListarAtletas(String tabla, String campo, int comparador) {   	
+    	numFilas = CronoDAO.numeroFilas(tabla, campo, comparador);
+    	logger.info(numFilas);
+		listarAtletas();
+		getInscritos();
+    }//fin del constructor
+    
+    
+    private void listarAtletas(){
+    	this.setColumnIdentifiers(this.nombreColumnas);
 		this.setRowCount(numFilas);
 		
 		for (int fila = 0; fila < numFilas; fila++)
@@ -41,7 +53,6 @@ public class ListarAtletas extends DefaultTableModel {
 		tablaListar = new JTable(this);
 		tablaListar.setFont(Fonts.FONT_LISTA);
 		
-		getAtletas();
 		setAnchoColumna();
 	
 		ctpListar = new Panel();
@@ -50,15 +61,43 @@ public class ListarAtletas extends DefaultTableModel {
 		ctpListar.add(new JScrollPane(tablaListar));
 		
 		new FrameTabla(ctpListar);
-	
-    }//fin del constructor
+    }
     
-    
-    
+   
     private void getAtletas(){
     	
     	int fila = 0;
     	List<AtletaDTO> atletas = CronoDAO.atletas();
+    	
+    	if(atletas != null) {
+    		
+    		for(Iterator<AtletaDTO> iterator = atletas.iterator(); iterator.hasNext();) {
+    			AtletaDTO atletaDTO = iterator.next();
+    			logger.info(atletaDTO);
+    			if(atletaDTO == null) continue;
+    			
+    			this.setValueAt(atletaDTO.getCedula(), fila, 0);
+				this.setValueAt(atletaDTO.getNombres(), fila, 1);
+				this.setValueAt(atletaDTO.getApellidos(), fila, 2);
+				this.setValueAt(atletaDTO.getAux(), fila, 3);
+				this.setValueAt(atletaDTO.getFechaNacimiento(), fila, 4);
+				this.setValueAt(atletaDTO.getTelefono(), fila, 5);
+				this.setValueAt(atletaDTO.getEmail(), fila, 6);
+				if(atletaDTO.getDiscapacitado() == 0) {
+					this.setValueAt("No", fila, 7);
+				}else {
+					this.setValueAt("Si", fila, 7);
+				}
+				fila++;
+    		}
+    	}	
+    }//fin getAtletas
+    
+    
+    private void getInscritos(){
+    	
+    	int fila = 0;
+    	List<AtletaDTO> atletas = CronoDAO.inscritos();
     	
     	if(atletas != null) {
     		

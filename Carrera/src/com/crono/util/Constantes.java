@@ -4,6 +4,8 @@ import com.crono.controlador.controladorBD.util.LeerPropiedades;
 
 public class Constantes {
 	
+	
+	//push git@github.com:freilind/Carrera.git
 	private String archivoRecursos;
 	public static String RUTA_ICONOS, EXCEPTION, EXCEPTION_BD, CAMPO_OBLIGATORIO, 
 						 ERROR_ESCRITURA, CEDULA, CEDULA_REGISTRADA,CEDULA_NO_REGISTRADA,ACCESO_DENEGADO,

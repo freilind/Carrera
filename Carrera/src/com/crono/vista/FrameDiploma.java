@@ -39,17 +39,17 @@ public class FrameDiploma extends Thread{
 		FrameOtros.tbpOtros.addTab("Diploma", null,ctpDiploma, null);
 		
 		
-		btnEmail = new JButton("Enviar Email");
-		btnEmail.setFont(Fonts.FONT_BOTON);
-		btnEmail.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"mail.png"));
-		btnEmail.setToolTipText("Enviar email masivo con los resultados");
-		btnEmail.setBounds(80, 170, 145, 50);
-
 		btnDiploma = new JButton("Diplomas");
 		btnDiploma.setFont(Fonts.FONT_BOTON);
 		btnDiploma.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"diploma.png"));
 		btnDiploma.setToolTipText("Generar los Diplomas");
 		btnDiploma.setBounds(80, 50, 145, 50);
+		
+		btnEmail = new JButton("Enviar Email");
+		btnEmail.setFont(Fonts.FONT_BOTON);
+		btnEmail.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"mail.png"));
+		btnEmail.setToolTipText("Enviar email masivo con los resultados");
+		btnEmail.setBounds(80, 150, 145, 50);	
 		
 		btnSalir = new JButton("Salir");
 		btnSalir.setFont(Fonts.FONT_BOTON);
@@ -60,25 +60,27 @@ public class FrameDiploma extends Thread{
 		lblLogo.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"logo.png"));
 		lblLogo.setBounds(440, 61, 200, 200);
 		
-		ctpDiploma.add(btnEmail);
 		ctpDiploma.add(btnDiploma);
+		ctpDiploma.add(btnEmail);
 		ctpDiploma.add(btnSalir);
 		ctpDiploma.add(lblLogo);
 		
 		
-		btnSalir.addKeyListener(new KeyAdapter() {
+		btnDiploma.addKeyListener(new KeyAdapter() {
 		    public void keyPressed(KeyEvent evt) {
 				if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-				    salir();
+					generarPdf();
+					btnDiploma.setEnabled(false);
 				}
 		    }
 		});
 		
 		
-		btnSalir.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent arg0) {
-		    	salir();
-		    }
+		btnDiploma.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				generarPdf();
+				btnDiploma.setEnabled(false);
+			}
 		});
 		
 		
@@ -100,21 +102,19 @@ public class FrameDiploma extends Thread{
 		});
 		
 		
-		btnDiploma.addKeyListener(new KeyAdapter() {
+		btnSalir.addKeyListener(new KeyAdapter() {
 		    public void keyPressed(KeyEvent evt) {
 				if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-					generarPdf();
-					btnDiploma.setEnabled(false);
+				    salir();
 				}
 		    }
 		});
 		
 		
-		btnDiploma.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				generarPdf();
-				btnDiploma.setEnabled(false);
-			}
+		btnSalir.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent arg0) {
+		    	salir();
+		    }
 		});
 		
 	}//fin constructor

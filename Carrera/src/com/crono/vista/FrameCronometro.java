@@ -24,7 +24,7 @@ public class FrameCronometro implements Runnable, ActionListener{
 	private JTextField txfNumero;
 	private int numero;
 	private SimpleDateFormat tmpSDF;
-	private long tiempoActual;
+	private long tiempoActual, tiempoInicio;
 	
 	public FrameCronometro() {
 		ctpCrono = new Panel();	
@@ -94,16 +94,18 @@ public class FrameCronometro implements Runnable, ActionListener{
 	
 	public void run(){
 		
-		long tiempoInicio = System.currentTimeMillis();
 		if(CronoDAO.isEventoFecha()){
+			tiempoInicio = System.currentTimeMillis();
 			CronoDAO.setEventoFecha(tiempoInicio);
+		}else{
+			tiempoInicio = CronoDAO.getEventoFecha();
 		}
 		
 		txfNumero.setEnabled(true);
 		try{
 			while( cronometroActivo ){		
 				Thread.sleep(40);
-					tiempoActual = System.currentTimeMillis();
+				tiempoActual = System.currentTimeMillis();
 				setTiempoCronometro(tiempoActual - tiempoInicio - 72_000_000);
 			}//fin del while
 			

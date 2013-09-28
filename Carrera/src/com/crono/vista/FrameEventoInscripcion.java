@@ -187,14 +187,14 @@ public class FrameEventoInscripcion {
 		
 		btnListar.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent arg0) {
-		    	new ListarAtletas();
+		    	new ListarAtletas("participantes", "eventoId", CronoDAO.getIdEvento());
 		    }
 		});
 		
 		btnListar.addKeyListener(new KeyAdapter() {
 		    public void keyPressed(KeyEvent evt) {
 				if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-					new ListarAtletas();
+					new ListarAtletas("participantes", "eventoId", CronoDAO.getIdEvento());
 				}
 		    }
 		});
@@ -338,7 +338,7 @@ public class FrameEventoInscripcion {
     	if(!msg2.isEmpty()) {
     		JOptionPane.showMessageDialog(null, msg, "ERROR", JOptionPane.ERROR_MESSAGE);
     	}else { 
-    		idEvento = CronoDAO.getIdEvento(txfEvento.getText());
+    		idEvento = CronoDAO.getIdEvento();
     		logger.info(idEvento);
     		if (!CronoDAO.validarParticipantexEvento(txfCedula.getText().trim(), idEvento)) {		
 				if (!CronoDAO.validarNumeroxEvento(txfNumero.getText().trim(), idEvento)) {

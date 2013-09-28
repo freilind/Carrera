@@ -50,7 +50,7 @@ public class FrameDescalificar extends JFrame{
 		txfDescalificar.setBounds(175, 171, 122, 28);	
 		txfDescalificar.setColumns(10);
 		
-		btnBorrar = new JButton("Borrar Resultados");
+		btnBorrar = new JButton("Borrar Tiempos");
 		btnBorrar.setFont(Fonts.FONT_BOTON);
 		btnBorrar.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"eraser.png"));
 		btnBorrar.setToolTipText("Borra todos los resultados de la Base de Datos");
@@ -129,6 +129,14 @@ public class FrameDescalificar extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				borrarTiempos();
 			}
+		});
+		
+		btnBorrar.addKeyListener(new KeyAdapter() {
+		    public void keyPressed(KeyEvent evt) {
+				if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+					borrarTiempos();
+				}
+		    }
 		});
 		
 		btnSalir.addKeyListener(new KeyAdapter() {
