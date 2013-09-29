@@ -291,7 +291,7 @@ public class FrameRegistro extends JFrame {
     	}else {
     		
     		if (validarCedula()) {
-				if (CronoDAO.usuarioExiste(txfCedula.getText().trim())) {
+				if (CronoDAO.atletaExiste(txfCedula.getText().trim())) {
 					txfCedula.setBackground(Fonts.COLOR_ERROR);
 					JOptionPane.showMessageDialog(null,Constantes.CEDULA_REGISTRADA, "ERROR",JOptionPane.ERROR_MESSAGE);
 				}else { 

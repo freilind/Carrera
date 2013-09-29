@@ -338,10 +338,9 @@ public class FrameEventoInscripcion {
     	if(!msg2.isEmpty()) {
     		JOptionPane.showMessageDialog(null, msg, "ERROR", JOptionPane.ERROR_MESSAGE);
     	}else { 
-    		idEvento = CronoDAO.getIdEvento();
     		logger.info(idEvento);
-    		if (!CronoDAO.validarParticipantexEvento(txfCedula.getText().trim(), idEvento)) {		
-				if (!CronoDAO.validarNumeroxEvento(txfNumero.getText().trim(), idEvento)) {
+    		if (!CronoDAO.validarParticipantexEvento(txfCedula.getText().trim())) {		
+				if (!CronoDAO.isNumeroExiste(new Integer(txfNumero.getText().trim()))) {
 					enviarContenido();
 				}else { 
 					txfNumero.setBackground(Fonts.COLOR_ERROR);

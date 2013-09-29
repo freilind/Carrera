@@ -38,7 +38,7 @@ public class Lectura {
 		}catch(NullPointerException np){
 			resultado = "";
 		}catch(Exception ex){
-			logger.debug(ex);
+			logger.info(ex);
 		} finally {
 			return resultado;
 		}
@@ -53,7 +53,7 @@ public class Lectura {
 		}catch(NullPointerException np){
 			resultado = "";
 		}catch(Exception ex){
-			logger.debug(ex);;
+			logger.info(ex);;
 		} finally {
 			return resultado;
 		}
@@ -192,7 +192,7 @@ public class Lectura {
 	  			i=Integer.parseInt(leerString(titulo));
 	  			paso=true;
 	  		}catch(NumberFormatException e){
-	  		    	i=0;
+	  		    i=0;
 	  			paso=false;
 	  			error("*** Error: tipo de dato incorrecto");
 	  		}

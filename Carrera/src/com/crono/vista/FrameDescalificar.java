@@ -83,12 +83,6 @@ public class FrameDescalificar extends JFrame{
 			}
 		});	
 		
-		txfCambiar.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent evt) {
-				txfCambiar.setText("");
-			}
-		});
 		
 		txfEliminar.addKeyListener(new KeyAdapter() {
 			@Override
@@ -96,6 +90,14 @@ public class FrameDescalificar extends JFrame{
 				if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 				    eliminarAtleta();
 				}
+			}
+		});
+		
+		
+		txfCambiar.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent evt) {
+				txfCambiar.setText("");
 			}
 		});
 		
@@ -160,28 +162,29 @@ public class FrameDescalificar extends JFrame{
     
     private void eliminarAtleta() {
     	if (validarCedula(txfEliminar.getText().trim())) {
-			if (CronoDAO.usuarioExiste(txfEliminar.getText())) {
-				CronoDAO.borrarAtleta(txfEliminar.getText());
+			if (CronoDAO.atletaExiste(txfEliminar.getText().trim())) {
+				CronoDAO.borrarAtleta(txfEliminar.getText().trim());
 			} else {
 				JOptionPane.showMessageDialog(null, Constantes.CEDULA_NO_REGISTRADA, "ERROR",JOptionPane.ERROR_MESSAGE);		
 			}//fin if
 		}
     }//fin eliminar atleta
-    
-    
+       
     
     private void cambiarNumero() {
     	if (validarCedula(txfCambiar.getText().trim())) {
-			if (CronoDAO.usuarioExiste(txfCambiar.getText())) {
+			if (CronoDAO.atletaExiste(txfCambiar.getText().trim()) && CronoDAO.validarParticipantexEvento(txfCambiar.getText().trim())) {
 				int numero=0;
 		    	Lectura le = new Lectura(); 	
 		    	numero = le.leerInt("Nuevo N\u00FAmero");
 		    	if(numero > 0){
-					if(CronoDAO.numeroExiste(numero)) {
+					if(CronoDAO.isNumeroExiste(numero)) {
 						JOptionPane.showMessageDialog(null, Constantes.NUMERO_REGISTRADO, "ERROR",JOptionPane.ERROR_MESSAGE);
 					}else {
-						CronoDAO.setNuevoNumero(numero, txfCambiar.getText());
+						CronoDAO.setNuevoNumero(numero, txfCambiar.getText().trim());
 					}
+		    	}else{
+		    		JOptionPane.showMessageDialog(null, Constantes.NUMERO_POSITIVO, "ERROR",JOptionPane.ERROR_MESSAGE);
 		    	}
 			} else {
 					JOptionPane.showMessageDialog(null, Constantes.CEDULA_NO_REGISTRADA, "ERROR",JOptionPane.ERROR_MESSAGE);		
@@ -192,8 +195,8 @@ public class FrameDescalificar extends JFrame{
     
     private void  descalificarAtleta() {
     	if(validarNumero()){
-	    	if(CronoDAO.isNumeroExiste(txfDescalificar.getText())) {
-	    		CronoDAO.descalificarAtleta(txfDescalificar.getText());
+	    	if(CronoDAO.isNumeroExiste(new Integer (txfDescalificar.getText().trim()))) {
+	    		CronoDAO.descalificarAtleta(txfDescalificar.getText().trim());
 	    	}else {
 	    		JOptionPane.showMessageDialog(null, Constantes.NUMERO_NO_EXISTE, "ERROR",JOptionPane.ERROR_MESSAGE);
 	    	}	
@@ -211,7 +214,7 @@ public class FrameDescalificar extends JFrame{
     		}  			
     	}catch (Exception ex) {
     		JOptionPane.showMessageDialog(null,Constantes.CEDULA, "ERROR", JOptionPane.ERROR_MESSAGE);
-    		logger.debug(ex);
+    		logger.info(ex);
     		return false;
     	}
     	
@@ -222,14 +225,14 @@ public class FrameDescalificar extends JFrame{
     private boolean validarNumero(){
     	num=0;
     	try {
-    		num=Integer.parseInt(txfDescalificar.getText());
+    		num=Integer.parseInt(txfDescalificar.getText().trim());
     		if(num < 1) {
     			JOptionPane.showMessageDialog(null, Constantes.NUMERO_POSITIVO, "ERROR", JOptionPane.ERROR_MESSAGE);
         		return false;
     		}  
     	}catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, Constantes.NUMERO_POSITIVO, "ERROR",JOptionPane.ERROR_MESSAGE);
-			logger.debug(ex);
+			logger.info(ex);
 			return false;
 		}
     	

@@ -171,7 +171,7 @@ public class FrameCronometro implements Runnable, ActionListener{
 		boolean flag=false;
 		numero=0;
 		try {
-			numero=Integer.parseInt(txfNumero.getText());	 
+			numero=Integer.parseInt(txfNumero.getText().trim());	 
 			if(numero > 0) {
 				flag=true;
 			}else {
@@ -187,8 +187,8 @@ public class FrameCronometro implements Runnable, ActionListener{
 		}//fin try
 		 
 		if (flag) {
-			if (CronoDAO.isNumeroExiste(txfNumero.getText()) && !CronoDAO.isNumeroRegistrado(txfNumero.getText())) {
-				CronoDAO.registrarTiempo(txfNumero.getText(), tiempoActual, lblTiempo.getText());
+			if (CronoDAO.isNumeroExiste(new Integer(txfNumero.getText().trim())) && !CronoDAO.isNumeroRegistrado(txfNumero.getText().trim())) {
+				CronoDAO.registrarTiempo(txfNumero.getText().trim(), tiempoActual, lblTiempo.getText());
 				txfNumero.setText("");
 			}//fin if numeroExiste
 		}//fin if flag
