@@ -72,6 +72,7 @@ public class Pdf extends PdfPageEventHelper{
 			cell = new PdfPCell (new Paragraph (titulo));
 		    cell.setColspan (anchoRegistro.length);
 		    cell.setHorizontalAlignment (Element.ALIGN_CENTER);
+		    cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 		    cell.setBackgroundColor (BaseColor.LIGHT_GRAY);
 		    cell.setPadding (5.0f);
 		tabla.addCell (cell);
@@ -79,8 +80,9 @@ public class Pdf extends PdfPageEventHelper{
 	    for (String tit:columna){
 	    	cell = new PdfPCell (new Paragraph (tit));
     	    cell.setHorizontalAlignment (Element.ALIGN_CENTER);
+    	    cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
     	    cell.setBackgroundColor (BaseColor.LIGHT_GRAY);
-    	    cell.setPadding (10.0f);
+    	    cell.setPadding (5.0f);
     	    tabla.addCell (cell);
     	}//fin del for
 	    	

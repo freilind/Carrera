@@ -1,6 +1,5 @@
 package com.crono.resultados;
 
-import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
@@ -14,9 +13,9 @@ import com.crono.util.Constantes;
 public class General extends Pdf{
 	
 	private static final Logger logger = Logger.getLogger(General.class);
-    private static String titulo[]={" # "," Nombre"," Apellido"," Num"," Categoria"," Genero"," Tiempo"};
+    private static String titulo[]={" # "," Nombres"," Apellidos"," Num"," Categor\u00EDa"," G\u00E9nero"," Tiempo"};
     private static float ancho[]={250, 500, 160};
-	private static float anchoRegistro[]={40, 150,150, 90, 140, 140, 160};
+	private static float anchoRegistro[]={40, 180,190, 90, 145, 120, 160};
 	
 	public General(){
 		super("pdf/ResultadoGeneral.pdf", "Resultado General", titulo, anchoRegistro, ancho);
@@ -29,7 +28,7 @@ public class General extends Pdf{
 			JOptionPane.showMessageDialog(null, Constantes.RESULTADO, "Aviso", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, Constantes.EXCEPTION, "ERROR", JOptionPane.ERROR_MESSAGE);
-            logger.debug(ex);
+            logger.info(ex);
         }finally{
             document.close();
         }
@@ -43,8 +42,7 @@ public class General extends Pdf{
     	List<ResultadoDTO> result = CronoDAO.getResultadoGeneral();
     	
 	    int pos=1;
-	    for(Iterator<ResultadoDTO> iterator = result.iterator(); iterator.hasNext();) {
-	    	ResultadoDTO resultadoDTO = iterator.next();
+	    for(ResultadoDTO resultadoDTO : result) {
 	    	logger.info(resultadoDTO);
 	    	if(resultadoDTO == null) continue;
 	    	
@@ -54,10 +52,11 @@ public class General extends Pdf{
 		    tabla.addCell(new Phrase(" "+resultadoDTO.getNumero()));
 		    tabla.addCell(new Phrase(" "+resultadoDTO.getCategoria()));
 		    tabla.addCell(new Phrase(" "+resultadoDTO.getGenero()));
-		    tabla.addCell(new Phrase(" "+resultadoDTO.getTiempo()));  			 
+		    tabla.addCell(new Phrase(" "+resultadoDTO.getTiempo()));  
+		   
 		    pos++;
 	    }
-		
+
     	return tabla;
     }//fin crear cuerpo
 

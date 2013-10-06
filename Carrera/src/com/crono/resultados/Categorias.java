@@ -1,60 +1,37 @@
 package com.crono.resultados;
 
-import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Iterator;
+import java.util.*;
 import java.util.List;
-import java.util.Locale;
 import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
-
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
-import com.crono.controlador.controladorBD.bd.ControladorBD;
 import com.crono.dao.CronoDAO;
 import com.crono.modelo.dto.ResultadoDTO;
 import com.crono.util.Constantes;
 
 
-public class Categorias extends PdfPageEventHelper {
+public class Categorias extends Pdf {
 	
-	private static final Logger logger = Logger.getLogger(Categorias.class);
-	private PdfPTable tabla, header;
-    private PdfPCell cell;
-    @SuppressWarnings("unused")
-    private PdfWriter writer;
-    private int numCat;
-    private String titulo[]={" # ","Nombre"," Apellido","Numero", "Tiempo"}, 
-    		categorias[]={"16 - 19", "20 -24", "25 - 29", "30 -34", "35 - 39", "40 - 44", "45 - 49", "50 - 55", "55 +", "Discapacitados"},
-    		sexo[]={"Masculino", "Femenino"};
-    private float ancho[]={250, 500, 160}, anchoRegistro[]={40, 200,200, 120, 180};
-    
+	private static final Logger logger = Logger.getLogger(Categorias.class); 
+    private static String titulo[]={" # ","Nombres"," Apellidos"," N\u00FAmero", " Tiempo"};		
+    private static float ancho[]={250, 500, 160};
+    private static float anchoRegistro[]={40, 200,200, 120, 180};
+    private List<String> categorias;
+    private String sexo[]={"Masculino", "Femenino"};
     
     public Categorias(){
 		
-		Document document=new Document(PageSize.A4, 5, 5, 5, 5);
-		try {
-		    writer = PdfWriter.getInstance(document,new FileOutputStream("ResultadosCategorias.pdf"));
-		    
-		} catch (FileNotFoundException fnfe) {
-		    JOptionPane.showMessageDialog(null, Constantes.EXCEPTION,"ERROR", JOptionPane.ERROR_MESSAGE);
-		    logger.debug(fnfe);
-		} catch (DocumentException de) {
-		    JOptionPane.showMessageDialog(null, Constantes.EXCEPTION,"ERROR", JOptionPane.ERROR_MESSAGE);
-		    logger.debug(de);
-		}
+		super("pdf/ResultadoCategorias.pdf", "Resultado Categorias", titulo, anchoRegistro, ancho);
 		
 	        try {
-	           document.open();
-	           numCat = 0;
-	           numCat = ControladorBD.contadorTabla("categorias") - 1;
-	           logger.info(numCat);
-	        		   
-	           for (int cat = 0; cat < numCat; cat++) {
+	           document.open();      
+	           categorias = CronoDAO.getCategorias();
+	           logger.info(categorias);
+	           
+   
+	           for (int cat = 0; cat < categorias.size(); cat++) {
 	               for(int sex = 0; sex < sexo.length; sex++) {
 						document.add((crearHeader(cat)));
 						document.add(crearTitulos(cat, sex));
@@ -88,7 +65,7 @@ public class Categorias extends PdfPageEventHelper {
     private PdfPTable crearTitulos(int cat, int sex) throws Exception{
 	
 		tabla=new PdfPTable(anchoRegistro);
-    	cell = new PdfPCell (new Paragraph ("Resultados Categoria: "+ categorias[cat]+"  "+sexo[sex]));
+    	cell = new PdfPCell (new Paragraph ("Resultados Categoria: "+ categorias.get(cat)+"  "+sexo[sex]));
     	cell.setColspan (5);
     	cell.setHorizontalAlignment (Element.ALIGN_CENTER);
     	cell.setBackgroundColor (BaseColor.LIGHT_GRAY);
@@ -111,11 +88,10 @@ public class Categorias extends PdfPageEventHelper {
     private PdfPTable crearCuerpo(int cat, int sex) throws Exception{
 		
     	tabla=new PdfPTable(anchoRegistro);	   	
-    	List<ResultadoDTO> result = CronoDAO.getResultadoCategorias(cat, sex);
+    	List<ResultadoDTO> result = CronoDAO.getResultadoCategorias(cat+1, sex+1);
     	
 	    int pos=1;
-	    for(Iterator<ResultadoDTO> iterator = result.iterator(); iterator.hasNext();) {
-	    	ResultadoDTO resultadoDTO = iterator.next();
+	    for(ResultadoDTO resultadoDTO : result) {
 	    	logger.info(resultadoDTO);
 	    	if(resultadoDTO == null) continue;
 	    	

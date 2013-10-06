@@ -139,9 +139,9 @@ public class FrameEventoInscripcion {
 		ctpInscripcion.add(txfNumero);
 		ctpInscripcion.add(lblEvento);
 		ctpInscripcion.add(txfEvento);
-		ctpInscripcion.add(lblElite);
-		ctpInscripcion.add(rdbtnNo);
-		ctpInscripcion.add(rdbtnSi);
+	//	ctpInscripcion.add(lblElite);
+	//	ctpInscripcion.add(rdbtnNo);
+	//	ctpInscripcion.add(rdbtnSi);
 		ctpInscripcion.add(btnInscribir);
 		ctpInscripcion.add(btnBorrar);
 		ctpInscripcion.add(btnListar);
@@ -253,42 +253,22 @@ public class FrameEventoInscripcion {
 		fecha = cal.get(Calendar.YEAR);
 		temp = fecha - year;
 		idCat = 0;
-		
 		System.out.println(temp);
 		
-		if(temp == 8 || temp == 9)
-			idCat = 1;
-		if(temp == 10 || temp == 11)
-			idCat = 2;
-		if(temp == 12 || temp == 13)
-			idCat = 3;
-		if(temp == 14 || temp == 15)
-			idCat = 4;
-		if(temp == 16 || temp == 17)
-			idCat = 5;
-		if(temp == 18 || temp == 19)
-			idCat = 6;
-		if(temp >= 20 && temp <= 24)
-			idCat = 7;
-		if(temp >= 25 && temp <= 29)
-			idCat = 8;
-		if(temp >= 30 && temp <= 34)
-			idCat = 9;
-		if(temp >= 35 && temp <= 39)
-			idCat = 10;
-		if(temp >= 40 && temp <= 44)
-			idCat = 11;
-		if(temp >= 45 && temp <= 49)
-			idCat = 12;
-		if(temp >= 50 && temp <= 54)
-			idCat = 13;
-		if(temp >= 55)
-			idCat = 14;
+		List<String> result = CronoDAO.getCategorias(); 
+		
+		for(String categoria : result){	
+			String ini = categoria.substring(0, 2);
+			String fin = categoria.substring(categoria.length()-2, categoria.length());
 			
-		String categoria = CronoDAO.getCategoria(idCat);
-		logger.info(categoria);
-		if(categoria != null)
-			txfCategoria.setText(categoria);
+			if(temp >= new Integer (ini) && temp <= new Integer (fin)){
+				
+				idCat = CronoDAO.getIdCategoria(categoria);
+				logger.info(idCat);
+				if(idCat != 0)
+					txfCategoria.setText(categoria);	
+			}
+		}//fin for
 		
 	}// buscarCategoria
 
@@ -372,7 +352,7 @@ public class FrameEventoInscripcion {
 	
 	
     private void enviarContenido() {   	
-    	if(CronoDAO.registrarParticipante(txfCedula.getText().trim(), idEvento, txfNumero.getText().trim(), idCat, (rdbtnSi.isSelected() ? 1 : 0))) {
+    	if(CronoDAO.registrarParticipante(txfCedula.getText().trim(), txfNumero.getText().trim(), idCat, (rdbtnSi.isSelected() ? 1 : 0))) {
     		JOptionPane.showMessageDialog(null, "Participante Registrado.");
     		borrarContenido();
     	}	

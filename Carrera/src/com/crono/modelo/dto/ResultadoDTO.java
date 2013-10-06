@@ -4,11 +4,13 @@ import java.io.Serializable;
 
 public class ResultadoDTO implements Serializable{
 	
+
 	public ResultadoDTO(){}
 	
 	private static final long serialVersionUID = 1L;
 	private String nombres;
 	private String apellidos;
+	private String cedula;
 	private String categoria;
 	private String genero;
 	private String numero;
@@ -25,6 +27,12 @@ public class ResultadoDTO implements Serializable{
 	}
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
+	}
+	public String getCedula() {
+		return cedula;
+	}
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
 	}
 	public String getCategoria() {
 		return categoria;
@@ -53,9 +61,23 @@ public class ResultadoDTO implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "ResultadoDTO [nombres=" + nombres + ", apellidos=" + apellidos
-				+ ", categoria=" + categoria + ", genero=" + genero
-				+ ", numero=" + numero + ", tiempo=" + tiempo + "]";
+		StringBuilder builder = new StringBuilder();
+			builder.append("ResultadoDTO [nombres=");
+			builder.append(nombres);
+			builder.append(", apellidos=");
+			builder.append(apellidos);
+			builder.append(", cedula=");
+			builder.append(cedula);
+			builder.append(", categoria=");
+			builder.append(categoria);
+			builder.append(", genero=");
+			builder.append(genero);
+			builder.append(", numero=");
+			builder.append(numero);
+			builder.append(", tiempo=");
+			builder.append(tiempo);
+			builder.append("]");
+		return builder.toString();
 	}
 	
 	

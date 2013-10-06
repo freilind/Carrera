@@ -1,10 +1,7 @@
 package com.crono.resultados;
 
-import java.util.Iterator;
 import java.util.List;
-
 import javax.swing.JOptionPane;
-
 import org.apache.log4j.Logger;
 
 import com.itextpdf.text.*;
@@ -17,12 +14,12 @@ import com.crono.util.Constantes;
 public class Inscritos extends Pdf{
 	
 	private static final Logger logger = Logger.getLogger(Inscritos.class);	
-    private static String titulo[]={" Nombre"," Apellido"," Numero"," Categoria"," Genero"};
-	private static float anchoRegistro[]={160, 160, 160, 160, 160};
+    private static String titulo[]={" Nombres"," Apellidos"," C\u00E9dula"," N\u00FAmero"," Categor\u00EDa"," G\u00E9nero"};
+	private static float anchoRegistro[]={180, 190, 140,120, 150, 130};
 	private static float ancho[]={250, 500, 160};
 	
 	public Inscritos(){
-		super("Inscritos.pdf", "Inscritos", titulo, anchoRegistro, ancho);
+		super("pdf/Inscritos.pdf", "Inscritos", titulo, anchoRegistro, ancho);
 		
 		try {
 			document.open(); 
@@ -44,13 +41,13 @@ public class Inscritos extends Pdf{
     	tabla=new PdfPTable(anchoRegistro);	   	
     	List<ResultadoDTO> result = CronoDAO.getInscritos();
     	
-	    for(Iterator<ResultadoDTO> iterator = result.iterator(); iterator.hasNext();) {
-	    	ResultadoDTO resultadoDTO = iterator.next();
+    	for(ResultadoDTO resultadoDTO : result) {
 	    	logger.info(resultadoDTO);
 	    	if(resultadoDTO == null) continue;
 	    	
 		    tabla.addCell(new Phrase(" "+resultadoDTO.getNombres()));
 		    tabla.addCell(new Phrase(" "+resultadoDTO.getApellidos()));
+		    tabla.addCell(new Phrase(" "+resultadoDTO.getCedula()));
 		    tabla.addCell(new Phrase(" "+resultadoDTO.getNumero()));
 		    tabla.addCell(new Phrase(" "+resultadoDTO.getCategoria()));
 		    tabla.addCell(new Phrase(" "+resultadoDTO.getGenero())); 			 

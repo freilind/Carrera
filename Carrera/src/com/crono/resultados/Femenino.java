@@ -1,6 +1,5 @@
 package com.crono.resultados;
 
-import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
@@ -14,12 +13,12 @@ import com.crono.util.Constantes;
 public class Femenino extends Pdf{
 	
 	private static final Logger logger = Logger.getLogger(Femenino.class);
-    private static String titulo[]={" # "," Nombre"," Apellido"," Num"," Categoria"," Tiempo"};
+    private static String titulo[]={" # "," Nombres"," Apellidos"," Num"," Categor\u00EDa"," Tiempo"};
     private static float ancho[]={250, 500, 160};
-	private static float anchoRegistro[]={40, 150,150, 90, 140, 160};
+	private static float anchoRegistro[]={40, 180,190, 90, 145, 160};
 	
 	public Femenino() {
-		super("ResultadoFemenino.pdf", "Resultados Femenino", titulo, anchoRegistro, ancho);
+		super("pdf/ResultadoFemenino.pdf", "Resultado Femenino", titulo, anchoRegistro, ancho);
 		
 		try {
 			document.open(); 
@@ -43,8 +42,7 @@ public class Femenino extends Pdf{
     	List<ResultadoDTO> result = CronoDAO.getResultadoGenero(2);
     	
 	    int pos=1;
-	    for(Iterator<ResultadoDTO> iterator = result.iterator(); iterator.hasNext();) {
-	    	ResultadoDTO resultadoDTO = iterator.next();
+	    for(ResultadoDTO resultadoDTO : result) {
 	    	logger.info(resultadoDTO);
 	    	if(resultadoDTO == null) continue;
 	    	
