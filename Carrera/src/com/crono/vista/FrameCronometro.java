@@ -1,6 +1,7 @@
 package com.crono.vista;
 
 import java.awt.Color;
+import java.awt.Panel;
 import java.awt.event.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,7 +18,7 @@ public class FrameCronometro implements Runnable, ActionListener{
 	private static final Logger logger = Logger.getLogger(FrameCronometro.class);
 	private Panel ctpCrono;
 	private JButton btnIniciar, btnBorrar;
-	private JLabel lblTiempo, lblNumeroAtleta, lblLogo;
+	private JLabel lblTiempo, lblNumeroAtleta, lblLogo, lblBck;
 	private Thread hilo;
 	private boolean cronometroActivo;
 	private Lectura lec;
@@ -30,6 +31,10 @@ public class FrameCronometro implements Runnable, ActionListener{
 		ctpCrono = new Panel();	
 		FramePrincipal.tbpPrincipal.addTab("Cron\u00F3metro", null,ctpCrono, null);
 		ctpCrono.setLayout(null);
+		
+		lblBck=new JLabel();
+		lblBck.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_BCK+"bck.png")));
+		lblBck.setBounds(0, 0, 700, 525);
 		
 		lblTiempo = new JLabel( "00:00:00:000" );
 		lblTiempo.setFont(Fonts.FONT_RELOJ);
@@ -52,7 +57,7 @@ public class FrameCronometro implements Runnable, ActionListener{
 		//Boton iniciar
 	    btnIniciar = new JButton( "Iniciar" );
 	    btnIniciar.setFont(Fonts.FONT_BOTON);
-		btnIniciar.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"check.png"));
+		btnIniciar.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"check.png")));
 		btnIniciar.setBounds(150, 300, 120, 50);
 		btnIniciar.addActionListener( this );
 		
@@ -60,12 +65,12 @@ public class FrameCronometro implements Runnable, ActionListener{
 		//Boton reiniciar inicia nuevamente desde 0
 		btnBorrar = new JButton( "Borrar" );
 		btnBorrar.setFont(Fonts.FONT_BOTON);
-		btnBorrar.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"eraser.png"));
+		btnBorrar.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"eraser.png")));
 		btnBorrar.setBounds(350, 300, 120, 50);
 		btnBorrar.addActionListener( this );
 		
 		lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"logo.png"));
+		lblLogo.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"logo.png")));
 		lblLogo.setBounds(440, 110, 200, 200);
 		
 		ctpCrono.add( lblTiempo );
@@ -74,6 +79,7 @@ public class FrameCronometro implements Runnable, ActionListener{
 		ctpCrono.add(lblNumeroAtleta);
 		ctpCrono.add(txfNumero);
 		ctpCrono.add(lblLogo);
+		ctpCrono.add(lblBck);
 		
 		txfNumero.addKeyListener(new KeyAdapter() {
 			@Override

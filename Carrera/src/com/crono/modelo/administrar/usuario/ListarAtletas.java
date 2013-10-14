@@ -1,17 +1,20 @@
 package com.crono.modelo.administrar.usuario;
 
 import java.awt.Dimension;
+import java.awt.Panel;
 import java.util.Iterator;
 import java.util.List;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.*;
+
 import org.apache.log4j.Logger;
 
 import com.crono.dao.CronoDAO;
 import com.crono.modelo.dto.AtletaDTO;
+import com.crono.util.Constantes;
 import com.crono.util.Fonts;
-import com.crono.util.Panel;
 import com.crono.vista.FrameTabla;
 
 @SuppressWarnings("serial")
@@ -56,9 +59,10 @@ public class ListarAtletas extends DefaultTableModel {
 		setAnchoColumna();
 	
 		ctpListar = new Panel();
-		ctpListar.setBorder(new EmptyBorder(1, 1, 1, 1));
+		//ctpListar.setBorder(new EmptyBorder(1, 1, 1, 1));
 		tablaListar.setPreferredScrollableViewportSize(new Dimension(780,400));
 		ctpListar.add(new JScrollPane(tablaListar));
+		
 		
 		new FrameTabla(ctpListar);
     }

@@ -1,9 +1,10 @@
 package com.crono.vista;
 
+import java.awt.Panel;
 import java.awt.event.*;
 import javax.swing.*;
 import org.apache.log4j.Logger;
-
+import com.crono.controlador.Control;
 import com.crono.dao.CronoDAO;
 import com.crono.util.*;
 
@@ -12,7 +13,7 @@ public class FrameDescalificar extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = Logger.getLogger(FrameDescalificar.class);
     private Panel ctpDesc;
-    private JLabel lblCedula, lblCambiarNmero, lblDescalificar, lblLogo;
+    private JLabel lblCedula, lblCambiarNmero, lblDescalificar, lblLogo, lblBck;
     private JTextField txfEliminar,txfCambiar, txfDescalificar;
     private int aux, num;
     private JButton btnBorrar, btnSalir;
@@ -22,6 +23,9 @@ public class FrameDescalificar extends JFrame{
 		ctpDesc.setLayout(null);
 		FrameOtros.tbpOtros.addTab("Descalificar", null,ctpDesc, null);
 		
+		lblBck=new JLabel();
+		lblBck.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_BCK+"bck.png")));
+		lblBck.setBounds(0, 0, 700, 525);
 		
 		lblCedula = new JLabel("Eliminar Atleta:");
 		lblCedula.setFont(Fonts.FONT_LABEL);
@@ -52,17 +56,17 @@ public class FrameDescalificar extends JFrame{
 		
 		btnBorrar = new JButton("Borrar Tiempos");
 		btnBorrar.setFont(Fonts.FONT_BOTON);
-		btnBorrar.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"eraser.png"));
+		btnBorrar.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"eraser.png")));
 		btnBorrar.setToolTipText("Borra todos los resultados de la Base de Datos");
 		btnBorrar.setBounds(245, 344, 142, 50);
 		
 		btnSalir = new JButton("Salir");
 		btnSalir.setFont(Fonts.FONT_BOTON);
-		btnSalir.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"delete.png"));
+		btnSalir.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"delete.png")));
 		btnSalir.setBounds(565, 371, 120, 50);
 		
 		lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"logo.png"));
+		lblLogo.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"logo.png")));
 		lblLogo.setBounds(440, 61, 200, 200);
 		
 		ctpDesc.add(lblCedula);
@@ -74,7 +78,7 @@ public class FrameDescalificar extends JFrame{
 		ctpDesc.add(btnBorrar);
 		ctpDesc.add(btnSalir);
 		ctpDesc.add(lblLogo);
-		
+		ctpDesc.add(lblBck);
 	
 		txfEliminar.addFocusListener(new FocusAdapter() {
 			@Override
@@ -252,7 +256,7 @@ public class FrameDescalificar extends JFrame{
 
     
     public void salir() {
-    	System.exit(0);
+    	Control.cerrarApp();
     }
 
 }

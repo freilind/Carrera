@@ -1,5 +1,6 @@
 package com.crono.vista;
 
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -19,18 +20,18 @@ import javax.swing.JTextArea;
 
 import org.apache.log4j.Logger;
 
+import com.crono.controlador.Control;
 import com.crono.controlador.controladorBD.bd.ControladorBD;
 import com.crono.modelo.dto.AtletaDTO;
 import com.crono.resultados.Diploma;
 import com.crono.util.Constantes;
 import com.crono.util.Fonts;
-import com.crono.util.Panel;
 
 public class FrameDiploma extends Thread{
 	
 	private static final Logger logger = Logger.getLogger(FrameDiploma.class);
 	private JButton btnSalir, btnDiploma, btnEmail;
-	private JLabel lblLogo;
+	private JLabel lblLogo, lblBck;
 	private Panel ctpDiploma;
 	
 	public FrameDiploma(){
@@ -38,33 +39,36 @@ public class FrameDiploma extends Thread{
 		ctpDiploma.setLayout(null);
 		FrameOtros.tbpOtros.addTab("Diploma", null,ctpDiploma, null);
 		
+		lblBck=new JLabel();
+		lblBck.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_BCK+"bck.png")));
+		lblBck.setBounds(0, 0, 700, 525);
 		
 		btnDiploma = new JButton("Diplomas");
 		btnDiploma.setFont(Fonts.FONT_BOTON);
-		btnDiploma.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"diploma.png"));
+		btnDiploma.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"diploma.png")));
 		btnDiploma.setToolTipText("Generar los Diplomas");
 		btnDiploma.setBounds(80, 50, 145, 50);
 		
 		btnEmail = new JButton("Enviar Email");
 		btnEmail.setFont(Fonts.FONT_BOTON);
-		btnEmail.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"mail.png"));
+		btnEmail.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"mail.png")));
 		btnEmail.setToolTipText("Enviar email masivo con los resultados");
 		btnEmail.setBounds(80, 150, 145, 50);	
 		
 		btnSalir = new JButton("Salir");
 		btnSalir.setFont(Fonts.FONT_BOTON);
-		btnSalir.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"delete.png"));
+		btnSalir.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"delete.png")));
 		btnSalir.setBounds(565, 371, 120, 50);
 		
 		lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"logo.png"));
+		lblLogo.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"logo.png")));
 		lblLogo.setBounds(440, 61, 200, 200);
 		
 		ctpDiploma.add(btnDiploma);
 		ctpDiploma.add(btnEmail);
 		ctpDiploma.add(btnSalir);
 		ctpDiploma.add(lblLogo);
-		
+		ctpDiploma.add(lblBck);
 		
 		btnDiploma.addKeyListener(new KeyAdapter() {
 		    public void keyPressed(KeyEvent evt) {
@@ -269,7 +273,7 @@ public class FrameDiploma extends Thread{
 	
     
 	public void salir() {
-    	System.exit(0);
+		Control.cerrarApp();
     }
 
 }

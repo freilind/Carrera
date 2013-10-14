@@ -7,12 +7,12 @@ public class Constantes {
 	
 	//push git@github.com:freilind/Carrera.git
 	private String archivoRecursos;
-	public static String RUTA_ICONOS, EXCEPTION, EXCEPTION_BD, CAMPO_OBLIGATORIO, 
+	public static String RUTA_ICONOS, RUTA_BCK, EXCEPTION, EXCEPTION_BD, CAMPO_OBLIGATORIO, 
 						 ERROR_ESCRITURA, CEDULA, CEDULA_REGISTRADA,CEDULA_NO_REGISTRADA,ACCESO_DENEGADO,
 						 CONFIG_BD, LOOK_FEEL, NINGUN_RESULTADO, CODIGO_AUTORIZACION, 
 						 CODIGO_ERROR, SELECCION_EVENTO, NUMERO_POSITIVO, NUMERO_NO_EXISTE, NUMERO_REGISTRADO,
 						 ESQUEMA_BD, RESULTADO, PARTICIPANTE_REGISTRADO, ERROR_ENCRIPTANDO, PATROCINADOR,EVENTO_UNICO,
-						 NO_HAY_EVENTO;
+						 NO_HAY_EVENTO, PROGRAMA_EJECUTANDOSE;
 	
 	public static String E_NOMBRE, E_APELLIDO, E_TELEFONO, E_EMAIL, E_CEDULA, E_SEXO, E_YEARB, E_NUMERO, E_EVENTO, E_BUSCAR_DATOS;
 	
@@ -27,7 +27,8 @@ public class Constantes {
 	public Constantes() {
 		archivoRecursos = "configuration";
 		LeerPropiedades.archivoRecurso = archivoRecursos;
-		RUTA_ICONOS = LeerPropiedades.leeID("rutaIconos");
+		RUTA_ICONOS = "/resources/iconos/";
+		RUTA_BCK = "/resources/";
 		PATROCINADOR = LeerPropiedades.leeID("patrocinador");
 		
 		EXCEPTION = "Ha Ocurrido Un Error Inesperado."; 
@@ -55,6 +56,7 @@ public class Constantes {
 		ERROR_ENCRIPTANDO = "No Se Pudo Encriptar el Password";
 		EVENTO_UNICO = "Solo puede Haber Un Evento Habilitado.\nDeshabilite el Evento Actual.";
 		NO_HAY_EVENTO = "No Hay Un Evento Habilitado Para Registrar Tiempos.";
+		PROGRAMA_EJECUTANDOSE= "El Programa Ya Se Esta Ejecutando.";
 		
 		E_NOMBRE = "El Nombre Debe Tener Entre 2 y 40 Caracteres.\n";
 		E_APELLIDO = "El Apellido Debe Tener Entre 2 y 40 Caracteres.\n";

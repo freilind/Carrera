@@ -1,10 +1,11 @@
 package com.crono.vista;
 
 import java.awt.Color;
+import java.awt.Panel;
 import java.awt.event.*;
 import javax.swing.*;
 import org.apache.log4j.Logger;
-
+import com.crono.controlador.Control;
 import com.crono.dao.CronoDAO;
 import com.crono.util.*;
 
@@ -13,7 +14,7 @@ public class FrameEventoValida {
 	private static final Logger logger = Logger.getLogger(FrameEventoValida.class);
 	private Panel ctpValida;
 	private JTextField txfNombre, txfEvento;
-	private JLabel lblNombre, lblCrear, lblDeshabilitar, lblEvento, lblLogo;
+	private JLabel lblNombre, lblCrear, lblDeshabilitar, lblEvento, lblLogo, lblBck;
 	private JButton btnCrear, btnBorrar, btnDesh, btnSalir;
 	private JSeparator separator;
 	private Lectura lec;
@@ -22,6 +23,10 @@ public class FrameEventoValida {
 		ctpValida = new Panel();	
 		ctpValida.setLayout(null);
 		FrameEvento.tbpEvento.addTab("V\u00E1lida", null,ctpValida, null);
+		
+		lblBck=new JLabel();
+		lblBck.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_BCK+"bck.png")));
+		lblBck.setBounds(0, 0, 700, 525);
 		
 		lblCrear = new JLabel("Crear Evento");
 		lblCrear.setFont(Fonts.FONT_LABEL);
@@ -38,12 +43,12 @@ public class FrameEventoValida {
 		
 		btnCrear = new JButton("Crear");
 		btnCrear.setFont(Fonts.FONT_BOTON);
-		btnCrear.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"guardar.png"));
+		btnCrear.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"guardar.png")));
 		btnCrear.setBounds(140, 120, 120, 50);
 		
 		btnBorrar = new JButton("Borrar");
 		btnBorrar.setFont(Fonts.FONT_BOTON);
-		btnBorrar.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"eraser.png"));
+		btnBorrar.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"eraser.png")));
 		btnBorrar.setBounds(270, 120, 120, 50);
 		
 		separator = new JSeparator();
@@ -70,11 +75,11 @@ public class FrameEventoValida {
 		
 		btnSalir = new JButton("Salir");
 		btnSalir.setFont(Fonts.FONT_BOTON);
-		btnSalir.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"delete.png"));
+		btnSalir.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"delete.png")));
 		btnSalir.setBounds(565, 371, 120, 50);
 		
 		lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"logo.png"));
+		lblLogo.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"logo.png")));
 		lblLogo.setBounds(440, 61, 200, 200);
 		
 		getTxfEvento();
@@ -91,6 +96,7 @@ public class FrameEventoValida {
 		ctpValida.add(btnDesh);
 		ctpValida.add(btnSalir);
 		ctpValida.add(lblLogo);
+		ctpValida.add(lblBck);
 		
 		btnCrear.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent arg0) {
@@ -218,7 +224,7 @@ public class FrameEventoValida {
 	
 	
 	public void salir() {
-    	System.exit(0);
+		Control.cerrarApp();
 	}
 	
 }

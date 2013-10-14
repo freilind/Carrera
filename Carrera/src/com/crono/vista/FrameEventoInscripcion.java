@@ -1,13 +1,14 @@
 package com.crono.vista;
 
 import java.awt.Color;
+import java.awt.Panel;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 import org.apache.log4j.Logger;
-
 import com.crono.modelo.dto.AtletaDTO;
 import com.crono.modelo.administrar.usuario.*;
+import com.crono.controlador.Control;
 import com.crono.dao.CronoDAO;
 import com.crono.util.*;
 
@@ -16,7 +17,7 @@ public class FrameEventoInscripcion {
 	private static final Logger logger = Logger.getLogger(FrameEventoInscripcion.class);
 	private Panel ctpInscripcion;
 	private JTextField txfCedula, txfNombres, txfApellidos, txfCategoria, txfNumero, txfEvento;
-	private JLabel lblCedula, lblNombres, lblApellidos, lblCategoria, lblEvento, lblNumero, lblElite, lblLogo;
+	private JLabel lblCedula, lblNombres, lblApellidos, lblCategoria, lblEvento, lblNumero, lblElite, lblLogo, lblBck;
 	private JRadioButton rdbtnNo, rdbtnSi;
 	private JButton btnInscribir, btnBorrar, btnListar, btnSalir;
 	private ButtonGroup btgElite;
@@ -30,6 +31,10 @@ public class FrameEventoInscripcion {
 		ctpInscripcion = new Panel();
 		ctpInscripcion.setLayout(null);
 		FrameEvento.tbpEvento.addTab("Inscripci\u00F3n", null,ctpInscripcion, null);
+		
+		lblBck=new JLabel();
+		lblBck.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_BCK+"bck.png")));
+		lblBck.setBounds(0, 0, 700, 525);
 		
 		lblCedula = new JLabel("Cedula");
 		lblCedula.setFont(Fonts.FONT_LABEL);
@@ -103,26 +108,26 @@ public class FrameEventoInscripcion {
 		
 		btnInscribir = new JButton("Inscribir");
 		btnInscribir.setFont(Fonts.FONT_BOTON);
-		btnInscribir.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"guardar.png"));
+		btnInscribir.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"guardar.png")));
 		btnInscribir.setBounds(140, 371, 120, 50);
 		
 		btnBorrar = new JButton("Borrar");
 		btnBorrar.setFont(Fonts.FONT_BOTON);
-		btnBorrar.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"eraser.png"));
+		btnBorrar.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"eraser.png")));
 		btnBorrar.setBounds(280, 371, 120, 50);
 		
 		btnListar = new JButton("Listar");
 		btnListar.setFont(Fonts.FONT_BOTON);
-		btnListar.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"list_user.png"));
+		btnListar.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"list_user.png")));
 		btnListar.setBounds(420, 371, 120, 50);
 		
 		btnSalir = new JButton("Salir");
 		btnSalir.setFont(Fonts.FONT_BOTON);
-		btnSalir.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"delete.png"));
+		btnSalir.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"delete.png")));
 		btnSalir.setBounds(565, 371, 120, 50);
 		
 		lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"logo.png"));
+		lblLogo.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"logo.png")));
 		lblLogo.setBounds(440, 61, 200, 200);
 		
 		getTxfEvento();
@@ -147,7 +152,7 @@ public class FrameEventoInscripcion {
 		ctpInscripcion.add(btnListar);
 		ctpInscripcion.add(btnSalir);
 		ctpInscripcion.add(lblLogo);
-		
+		ctpInscripcion.add(lblBck);
 		
 		txfCedula.addKeyListener(new KeyAdapter() {
 		    public void keyPressed(KeyEvent evt) {
@@ -380,6 +385,6 @@ public class FrameEventoInscripcion {
 	 }//fin borrar contenido
 	 
 	 public void salir() {
-	    	System.exit(0);
+		 Control.cerrarApp();
 	 }
 }

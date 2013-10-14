@@ -1,0 +1,26 @@
+INFO AWT-EventQueue-0 com.crono.login.AccesoUsuario - admin - [C@31e089d
+INFO AWT-EventQueue-0 com.crono.controlador.encriptar.Encriptar - 40bd001563085fc35165329ea1ff5c5ecbdbbeef
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5c80435f, SELECT idUsuario, rol FROM usuarios WHERE nombreUsuario = 'admin' AND clave = '40bd001563085fc35165329ea1ff5c5ecbdbbeef'
+INFO AWT-EventQueue-0 com.crono.login.AccesoUsuario - [1, 1]
+INFO AWT-EventQueue-0 com.crono.login.Main - 1 - 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5c80435f, SELECT genero FROM sexos WHERE idSexo < 3
+INFO AWT-EventQueue-0 com.crono.vista.FrameRegistro - [-, Masculino, Femenino]
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5c80435f, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5c80435f, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @5c80435f, SELECT nombres, apellidos, fechaNacimiento FROM atletas WHERE idCedula = 17000001
+INFO AWT-EventQueue-0 com.crono.vista.FrameEventoInscripcion - AtletaDTO [nombres=NATANAEL, apellidos=REBOLLEDO, fechaNacimiento=1986, cedula=null, sexo=0, telefono=null, email=null, discapacitado=0, aux=null]
+INFO AWT-EventQueue-0 com.crono.dao.CronoDAO - com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+INFO AWT-EventQueue-0 com.crono.login.AccesoUsuario - admin - [C@5675d228
+INFO AWT-EventQueue-0 com.crono.controlador.encriptar.Encriptar - 40bd001563085fc35165329ea1ff5c5ecbdbbeef
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @71fdbf95, SELECT idUsuario, rol FROM usuarios WHERE nombreUsuario = 'admin' AND clave = '40bd001563085fc35165329ea1ff5c5ecbdbbeef'
+INFO AWT-EventQueue-0 com.crono.login.AccesoUsuario - [1, 1]
+INFO AWT-EventQueue-0 com.crono.login.Main - 1 - 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @71fdbf95, SELECT genero FROM sexos WHERE idSexo < 3
+INFO AWT-EventQueue-0 com.crono.vista.FrameRegistro - [-, Masculino, Femenino]
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @71fdbf95, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @71fdbf95, SELECT nombreEvento FROM eventos WHERE habilitado = 1
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @71fdbf95, SELECT nombres, apellidos, fechaNacimiento FROM atletas WHERE idCedula = 17000001
+INFO AWT-EventQueue-0 com.crono.vista.FrameEventoInscripcion - AtletaDTO [nombres=NATANAEL, apellidos=REBOLLEDO, fechaNacimiento=1986, cedula=null, sexo=0, telefono=null, email=null, discapacitado=0, aux=null]
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @71fdbf95, SELECT nombreCategoria FROM categorias WHERE nombreCategoria != '-'
+INFO AWT-EventQueue-0 com.crono.controlador.controladorBD.bd.ControladorBD - @71fdbf95, SELECT idCategoria FROM categorias WHERE nombreCategoria = 25 - 29
+INFO AWT-EventQueue-0 com.crono.vista.FrameEventoInscripcion - 0

@@ -1,14 +1,15 @@
 package com.crono.vista;
 
 import java.awt.Color;
+import java.awt.Panel;
 import java.awt.event.*;
 import java.util.Calendar;
 import java.util.List;
 import javax.swing.*;
 import org.apache.log4j.Logger;
-
 import com.crono.modelo.dto.AtletaDTO;
 import com.crono.modelo.administrar.usuario.*;
+import com.crono.controlador.Control;
 import com.crono.dao.CronoDAO;
 import com.crono.util.*;
 
@@ -17,7 +18,7 @@ public class FrameRegistro extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = Logger.getLogger(FrameRegistro.class);
     private JComboBox<String> cbxSexo, cbxYearB;
-    private JLabel lblNombres, lblApellidos, lblCedula, lblSexo,lblYearB, lblTlf, lblEmail, lblLogo, lblDiscapacitado;
+    private JLabel lblNombres, lblApellidos, lblCedula, lblSexo,lblYearB, lblTlf, lblEmail, lblLogo, lblDiscapacitado, lblBck;
     private JTextField txfNombres, txfApellidos, txfCedula, txfTlf, txfEmail;
     private JButton btnAceptar, btnBorrar, btnListar, btnSalir;
     private int cedula;
@@ -33,7 +34,11 @@ public class FrameRegistro extends JFrame {
 		ctpRegistro = new Panel();	
 		FramePrincipal.tbpPrincipal.addTab("Registro Atletas", null,ctpRegistro, null);
 		ctpRegistro.setLayout(null);
-	
+		
+		lblBck=new JLabel();
+		lblBck.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_BCK+"bck.png")));
+		lblBck.setBounds(0, 0, 700, 525);
+		
 		lblNombres = new JLabel("Nombres");
 		lblNombres.setFont(Fonts.FONT_LABEL);
 		lblNombres.setBounds(60, 30, 70, 25);
@@ -111,26 +116,26 @@ public class FrameRegistro extends JFrame {
 	
 		btnAceptar = new JButton("Guardar");
 		btnAceptar.setFont(Fonts.FONT_BOTON);
-		btnAceptar.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"guardar.png"));
+		btnAceptar.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"guardar.png")));
 		btnAceptar.setBounds(100, 355, 120, 50);
 	
 		btnBorrar = new JButton("Borrar");
 		btnBorrar.setFont(Fonts.FONT_BOTON);
-		btnBorrar.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"eraser.png"));
+		btnBorrar.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"eraser.png")));
 		btnBorrar.setBounds(250, 355, 120, 50);
 		
 		btnListar = new JButton("Listar #");
 		btnListar.setFont(Fonts.FONT_BOTON);
-		btnListar.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"list_user.png"));
+		btnListar.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"list_user.png")));
 		btnListar.setBounds(390, 355, 120, 50);
 		
 		btnSalir = new JButton("Salir");
 		btnSalir.setFont(Fonts.FONT_BOTON);
-		btnSalir.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"delete.png"));
+		btnSalir.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"delete.png")));
 		btnSalir.setBounds(565, 400, 120, 50);
 	
 		lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"logo.png"));
+		lblLogo.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"logo.png")));
 		lblLogo.setBounds(440, 90, 200, 200);
 		
 		setCbxSexo(); 	// añade valores al combobox sexo
@@ -159,7 +164,7 @@ public class FrameRegistro extends JFrame {
 		ctpRegistro.add(btnListar);
 		ctpRegistro.add(btnSalir);
 		ctpRegistro.add(lblLogo);
-	
+		ctpRegistro.add(lblBck);
 	
 		btnAceptar.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent arg0) {
@@ -369,6 +374,6 @@ public class FrameRegistro extends JFrame {
     }
     
     public void salir() {
-    	System.exit(0);
+    	Control.cerrarApp();
     }
 }

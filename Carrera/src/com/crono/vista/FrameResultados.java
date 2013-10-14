@@ -1,9 +1,10 @@
 package com.crono.vista;
 
+import java.awt.Panel;
 import java.awt.event.*;
 import javax.swing.*;
 import org.apache.log4j.Logger;
-
+import com.crono.controlador.Control;
 import com.crono.resultados.*;
 import com.crono.util.*;
 
@@ -12,7 +13,7 @@ public class FrameResultados {
 	private static final Logger logger = Logger.getLogger(FrameResultados.class);
 	private Panel ctpResultados;
 	private JButton btnGeneral, btnMasculino, btnFemenino, btnCategorias, btnInscritos, btnSalir;
-	private JLabel lblLogo;
+	private JLabel lblLogo, lblBck;
 	
 	public FrameResultados() {
 		
@@ -20,43 +21,47 @@ public class FrameResultados {
 		FramePrincipal.tbpPrincipal.addTab("Resultados", null,ctpResultados, null);
 		ctpResultados.setLayout(null);
 		
+		lblBck=new JLabel();
+		lblBck.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_BCK+"bck.png")));
+		lblBck.setBounds(0, 0, 700, 525);
+		
 		btnGeneral = new JButton("General");
 		btnGeneral.setToolTipText("Resultados Generales");
-		btnGeneral.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"medal.png"));
+		btnGeneral.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"medal.png")));
 		btnGeneral.setFont(Fonts.FONT_BOTON);
 		btnGeneral.setBounds(80, 50, 134, 50);
 		
 		btnMasculino = new JButton("Masculino");
-		btnMasculino.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"hombre.png"));
+		btnMasculino.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"hombre.png")));
 		btnMasculino.setToolTipText("Resultados Masculino");
 		btnMasculino.setFont(Fonts.FONT_BOTON);
 		btnMasculino.setBounds(80, 170, 134, 50);
 			
 		btnFemenino = new JButton("Femenino");
-		btnFemenino.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"mujer.png"));
+		btnFemenino.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"mujer.png")));
 		btnFemenino.setToolTipText("Resultados Femenino");
 		btnFemenino.setFont(Fonts.FONT_BOTON);
 		btnFemenino.setBounds(280, 170, 134, 50);
 			
 		btnCategorias = new JButton("Categorias");
-		btnCategorias.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"gpie.png"));
+		btnCategorias.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"gpie.png")));
 		btnCategorias.setToolTipText("Resultados Categor\u00EDa");
 		btnCategorias.setFont(Fonts.FONT_BOTON);
 		btnCategorias.setBounds(280, 50, 134, 50);
 		
 		btnInscritos = new JButton("Inscritos");
-		btnInscritos.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"list_user.png"));
+		btnInscritos.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"list_user.png")));
 		btnInscritos.setToolTipText("Listado de Inscritos");
 		btnInscritos.setFont(Fonts.FONT_BOTON);
 		btnInscritos.setBounds(80, 290, 134, 50);
 		
 		btnSalir = new JButton("Salir");
 		btnSalir.setFont(Fonts.FONT_BOTON);
-		btnSalir.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"delete.png"));
+		btnSalir.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"delete.png")));
 		btnSalir.setBounds(565, 400, 120, 50);
 	
 		lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"logo.png"));
+		lblLogo.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"logo.png")));
 		lblLogo.setBounds(440, 90, 200, 200);
 		
 		ctpResultados.add(btnGeneral);
@@ -66,6 +71,7 @@ public class FrameResultados {
 		ctpResultados.add(btnInscritos);
 		ctpResultados.add(btnSalir);
 		ctpResultados.add(lblLogo);	
+		ctpResultados.add(lblBck);
 		
 		btnGeneral.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -115,6 +121,6 @@ public class FrameResultados {
 	}//fin del constructor
 	
 	public void salir() {
-    	System.exit(0);
+		Control.cerrarApp();
     }
 }

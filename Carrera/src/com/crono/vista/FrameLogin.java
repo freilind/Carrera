@@ -2,11 +2,12 @@ package com.crono.vista;
 
 import javax.swing.*;
 import java.awt.Color;
+import java.awt.Panel;
 import java.awt.Toolkit;
 import java.awt.event.*;
 import javax.swing.UIManager.*;
 import org.apache.log4j.Logger;
-
+import com.crono.controlador.Control;
 import com.crono.login.*;
 import com.crono.util.*;
 
@@ -19,7 +20,7 @@ public class FrameLogin extends JFrame {
     private JTextField txfUsuario;
     private JPasswordField pwdClave;
     private JButton btnEntrar, btnSalir, btnConfigurarBD;
-    private JLabel lblUsuario, lblClave;
+    private JLabel lblUsuario, lblClave, lblBck;
 
     
     public FrameLogin() {
@@ -33,14 +34,14 @@ public class FrameLogin extends JFrame {
 		    }
 		} catch (Exception ex) {
 		    JOptionPane.showMessageDialog(null, Constantes.LOOK_FEEL,"ERROR", JOptionPane.ERROR_MESSAGE);
-		    logger.debug(ex);
+		    logger.info(ex);
 		    // si Nimbus no esta disponible se puede escojer otro look and feel
 		}
 	
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Constantes.RUTA_ICONOS+"logop.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource(Constantes.RUTA_ICONOS+"logop.png")));
 		setTitle("Ingreso al Sistema Cronometraje");
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setSize(310, 220);
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -49,8 +50,12 @@ public class FrameLogin extends JFrame {
     	ctpEntrada.setLayout(null);
     	setContentPane(ctpEntrada);
     	
+    	lblBck=new JLabel();
+		lblBck.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_BCK+"bck.png")));
+		lblBck.setBounds(0, 0, 310, 220);
+		
 		lblUsuario = new JLabel("Usuario");
-		lblUsuario.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"user.png"));
+		lblUsuario.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"user.png")));
 		lblUsuario.setFont(Fonts.FONT_LABEL);
 		lblUsuario.setBounds(30, 20, 80, 25);
 	
@@ -60,7 +65,7 @@ public class FrameLogin extends JFrame {
 		txfUsuario.setColumns(20);
 		
 		lblClave = new JLabel("Clave");
-		lblClave.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"keys.png"));
+		lblClave.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"keys.png")));
 		lblClave.setFont(Fonts.FONT_LABEL);
 		lblClave.setBounds(30, 55, 75, 25);
 		
@@ -70,20 +75,19 @@ public class FrameLogin extends JFrame {
 	
 		btnEntrar = new JButton("Entrar");
 		btnEntrar.setFont(Fonts.FONT_BOTON);
-		btnEntrar.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"check.png"));
+		btnEntrar.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"check.png")));
 		btnEntrar.setBounds(55, 100, 90, 40);
 	
 		btnSalir = new JButton("Salir");
 		btnSalir.setFont(Fonts.FONT_BOTON);
-		btnSalir.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"delete.png"));
+		btnSalir.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"delete.png")));
 		btnSalir.setBounds(165, 100, 90, 40);
 		
 		btnConfigurarBD = new JButton("Configurar Base Datos");
 		btnConfigurarBD.setFont(Fonts.FONT_BOTON);
-		btnConfigurarBD.setIcon(new ImageIcon(Constantes.RUTA_ICONOS+"db.png"));
+		btnConfigurarBD.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"db.png")));
 		btnConfigurarBD.setForeground(Color.BLUE);
-		btnConfigurarBD.setBounds(58, 149, 175, 30);	
-	
+		btnConfigurarBD.setBounds(58, 149, 175, 30);
 		
 		ctpEntrada.add(lblUsuario);
 		ctpEntrada.add(lblClave);
@@ -91,6 +95,10 @@ public class FrameLogin extends JFrame {
 		ctpEntrada.add(pwdClave);
 		ctpEntrada.add(btnEntrar);
 		ctpEntrada.add(btnSalir);
+		ctpEntrada.add(lblBck);
+		
+		
+			
 		//ctpEntrada.add(btnConfigurarBD);
 		
 		
@@ -149,8 +157,8 @@ public class FrameLogin extends JFrame {
     } // envia los datos para validarlos
     
 
-    public void salir() {
-    	System.exit(0);
+    public void salir() {   	
+    	Control.cerrarApp();
     }
     
     

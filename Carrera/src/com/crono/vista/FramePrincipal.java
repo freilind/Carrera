@@ -31,7 +31,7 @@ public class FramePrincipal extends JFrame {
 		    logger.debug(ex);
 		}
 	
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Constantes.RUTA_ICONOS+"logop.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource(Constantes.RUTA_ICONOS+"logop.png")));
 		setTitle("Sistema de Cron\u00F3metraje");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
