@@ -18,7 +18,7 @@ public class Femenino extends Pdf{
 	private static float anchoRegistro[]={40, 180,190, 90, 145, 160};
 	
 	public Femenino() {
-		super("pdf/ResultadoFemenino.pdf", "Resultado Femenino", titulo, anchoRegistro, ancho);
+		super("ResultadoFemenino.pdf", "Resultado Femenino", titulo, anchoRegistro, ancho);
 		
 		try {
 			document.open(); 

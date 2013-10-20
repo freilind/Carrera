@@ -11,6 +11,8 @@ package com.crono.util;
  */
 
 import javax.swing.*;
+import javax.swing.UIManager.LookAndFeelInfo;
+
 import org.apache.log4j.Logger;
 
 
@@ -22,6 +24,19 @@ public class Lectura {
 	
     public Lectura() {
 		paso=false;
+		
+		try {
+		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+				    UIManager.setLookAndFeel(info.getClassName());
+				    break;
+				}
+		    }
+		} catch (Exception ex) {
+		    JOptionPane.showMessageDialog(null, Constantes.LOOK_FEEL,"ERROR", JOptionPane.ERROR_MESSAGE);
+		    logger.info(ex);
+		    // si Nimbus no esta disponible se puede escojer otro look and feel
+		}
     }
 
 
@@ -33,7 +48,7 @@ public class Lectura {
 	public String leerString(String titulo){
 		try{
 			resultado =	JOptionPane.showInputDialog(titulo); //lee el dato
-			if(resultado.isEmpty() || resultado == null)
+			if(resultado == null || resultado.isEmpty())
 				resultado = "";
 		}catch(NullPointerException np){
 			resultado = "";
@@ -48,7 +63,7 @@ public class Lectura {
 	public String leerString(){
 		try{
 			resultado =	JOptionPane.showInputDialog("Cadena Texto"); //lee el dato
-			if(resultado.isEmpty() || resultado == null)
+			if(resultado == null || resultado.isEmpty())
 				resultado = "";	
 		}catch(NullPointerException np){
 			resultado = "";
@@ -291,5 +306,28 @@ public class Lectura {
 	  	return b;
 	}
 
+	
+	public String leerCodigo(String titulo){
+		resultado = "";
+		try{
+			JLabel jPassword = new JLabel("Password");
+	        JTextField password = new JPasswordField();
+	        Object[] ob = { jPassword, password};
+	        int result = JOptionPane.showConfirmDialog(null, ob, titulo,JOptionPane.OK_CANCEL_OPTION);
+	 
+	        if (result == JOptionPane.OK_OPTION) {
+	            resultado = password.getText();
+	            System.out.println(resultado);
+	            if( resultado == null || resultado.isEmpty())
+					resultado = "";
+	        }
+		}catch(Exception ex){
+			logger.info(ex);
+			resultado = "";
+		}
+		
+		return resultado;
+		
+	}//fin leer String
 
 }

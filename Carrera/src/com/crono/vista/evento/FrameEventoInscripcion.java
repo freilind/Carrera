@@ -1,4 +1,4 @@
-package com.crono.vista;
+package com.crono.vista.evento;
 
 import java.awt.Color;
 import java.awt.Panel;
@@ -16,7 +16,8 @@ public class FrameEventoInscripcion {
 	
 	private static final Logger logger = Logger.getLogger(FrameEventoInscripcion.class);
 	private Panel ctpInscripcion;
-	private JTextField txfCedula, txfNombres, txfApellidos, txfCategoria, txfNumero, txfEvento;
+	private JTextField txfCedula, txfNombres, txfApellidos, txfCategoria, txfNumero;
+	public static JTextField txfEvento;
 	private JLabel lblCedula, lblNombres, lblApellidos, lblCategoria, lblEvento, lblNumero, lblElite, lblLogo, lblBck;
 	private JRadioButton rdbtnNo, rdbtnSi;
 	private JButton btnInscribir, btnBorrar, btnListar, btnSalir;
@@ -258,7 +259,6 @@ public class FrameEventoInscripcion {
 		fecha = cal.get(Calendar.YEAR);
 		temp = fecha - year;
 		idCat = 0;
-		System.out.println(temp);
 		
 		List<String> result = CronoDAO.getCategorias(); 
 		
@@ -372,7 +372,7 @@ public class FrameEventoInscripcion {
     }//fin color text
 	
 	
-	 private void borrarContenido() {
+	private void borrarContenido() {
 	    	txfNombres.setText("");
 	    	txfApellidos.setText("");
 	    	txfCedula.setEnabled(true);

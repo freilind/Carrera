@@ -23,7 +23,7 @@ public class Categorias extends Pdf {
     
     public Categorias(){
 		
-		super("pdf/ResultadoCategorias.pdf", "Resultado Categorias", titulo, anchoRegistro, ancho);
+		super("ResultadoCategorias.pdf", "Resultado Categorias", titulo, anchoRegistro, ancho);
 		
 	        try {
 	           document.open();      

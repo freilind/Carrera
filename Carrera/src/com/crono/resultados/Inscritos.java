@@ -19,7 +19,7 @@ public class Inscritos extends Pdf{
 	private static float ancho[]={250, 500, 160};
 	
 	public Inscritos(){
-		super("pdf/Inscritos.pdf", "Inscritos", titulo, anchoRegistro, ancho);
+		super("Inscritos.pdf", "Inscritos", titulo, anchoRegistro, ancho);
 		
 		try {
 			document.open(); 

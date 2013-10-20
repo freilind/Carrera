@@ -1,11 +1,14 @@
 package com.crono.resultados;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
 import javax.swing.JOptionPane;
+
 import org.apache.log4j.Logger;
 
 import com.crono.dao.CronoDAO;
@@ -31,6 +34,8 @@ public class Pdf extends PdfPageEventHelper{
     protected String titulo;
     private String columna[];
     private float ancho[], anchoRegistro[];
+    private static String path = System.getProperties().getProperty("user.dir"); 
+    private static String separador = System.getProperties().getProperty("file.separator"); 
     
 	public Pdf(String tituloPdf, String titulo, String [] columna, float anchoRegistro[], float ancho[]){
 		
@@ -41,7 +46,7 @@ public class Pdf extends PdfPageEventHelper{
 		
 		document = new Document(PageSize.A4, 5, 5, 5, 5);
 		try {
-		    writer = PdfWriter.getInstance(document,new FileOutputStream(tituloPdf));
+		    writer = PdfWriter.getInstance(document,new FileOutputStream(path + separador + tituloPdf));
 		    
 		} catch (FileNotFoundException fnfe) {
 		    JOptionPane.showMessageDialog(null, Constantes.EXCEPTION, "ERROR", JOptionPane.ERROR_MESSAGE);

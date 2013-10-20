@@ -24,7 +24,7 @@ public class FrameTabla extends JFrame{
 		FrameTabla.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource(Constantes.RUTA_ICONOS+"logop.png")));
 		FrameTabla.setSize(810, 400);
 		setLocationRelativeTo(null);
-		
+		FrameTabla.add(ctpListar);	
 		FrameTabla.setVisible(true);
 		
     }

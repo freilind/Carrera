@@ -27,7 +27,7 @@ public class Diploma extends Pdf{
     private Document document;
 	
 	public Diploma(AtletaDTO a){
-		super("pdf/diploma/"+a.getCedula()+".pdf", " ", titulo, anchoRegistro, ancho);
+		super("diploma/"+a.getCedula()+".pdf", " ", titulo, anchoRegistro, ancho);
 		this.a = a;
 			
 		try {

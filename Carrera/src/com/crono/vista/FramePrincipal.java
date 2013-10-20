@@ -1,11 +1,14 @@
 package com.crono.vista;
 
 import java.awt.*;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.UIManager.*;
 import org.apache.log4j.Logger;
 import com.crono.util.Constantes;
+import com.crono.vista.evento.FrameEvento;
+import com.crono.vista.otros.FrameOtros;
 
 public class FramePrincipal extends JFrame {
 	

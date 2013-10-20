@@ -1,8 +1,9 @@
-package com.crono.vista;
+package com.crono.vista.evento;
 
 import java.awt.*;
 import javax.swing.*;
 import org.apache.log4j.Logger;
+import com.crono.vista.FramePrincipal;
 
 public class FrameEvento {
 	
@@ -12,7 +13,7 @@ public class FrameEvento {
 	 
 	public FrameEvento(){	 
 		ctpEvento = new Panel();
-		FramePrincipal.tbpPrincipal.addTab("Evento", null,ctpEvento, null);
+		FramePrincipal.tbpPrincipal.addTab("Eventos", null,ctpEvento, null);
 		ctpEvento.setLayout(new BorderLayout(0, 0));
 		tbpEvento = new JTabbedPane(JTabbedPane.TOP);
 		ctpEvento.add(tbpEvento, BorderLayout.CENTER);

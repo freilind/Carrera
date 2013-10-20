@@ -1,4 +1,4 @@
-package com.crono.vista;
+package com.crono.vista.otros;
 
 import java.awt.Panel;
 import java.awt.event.*;
@@ -16,7 +16,7 @@ public class FrameDescalificar extends JFrame{
     private JLabel lblCedula, lblCambiarNmero, lblDescalificar, lblLogo, lblBck;
     private JTextField txfEliminar,txfCambiar, txfDescalificar;
     private int aux, num;
-    private JButton btnBorrar, btnSalir;
+    private JButton btnSalir;
     
     public FrameDescalificar(){
 		ctpDesc = new Panel();
@@ -54,12 +54,6 @@ public class FrameDescalificar extends JFrame{
 		txfDescalificar.setBounds(175, 171, 122, 28);	
 		txfDescalificar.setColumns(10);
 		
-		btnBorrar = new JButton("Borrar Tiempos");
-		btnBorrar.setFont(Fonts.FONT_BOTON);
-		btnBorrar.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"eraser.png")));
-		btnBorrar.setToolTipText("Borra todos los resultados de la Base de Datos");
-		btnBorrar.setBounds(245, 344, 142, 50);
-		
 		btnSalir = new JButton("Salir");
 		btnSalir.setFont(Fonts.FONT_BOTON);
 		btnSalir.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"delete.png")));
@@ -75,7 +69,6 @@ public class FrameDescalificar extends JFrame{
 		ctpDesc.add(txfCambiar);
 		ctpDesc.add(lblDescalificar);
 		ctpDesc.add(txfDescalificar);
-		ctpDesc.add(btnBorrar);
 		ctpDesc.add(btnSalir);
 		ctpDesc.add(lblLogo);
 		ctpDesc.add(lblBck);
@@ -130,21 +123,7 @@ public class FrameDescalificar extends JFrame{
 				txfDescalificar.setText("");
 			}
 		});
-		
-		btnBorrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				borrarTiempos();
-			}
-		});
-		
-		btnBorrar.addKeyListener(new KeyAdapter() {
-		    public void keyPressed(KeyEvent evt) {
-				if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-					borrarTiempos();
-				}
-		    }
-		});
-		
+			
 		btnSalir.addKeyListener(new KeyAdapter() {
 		    public void keyPressed(KeyEvent evt) {
 				if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -152,7 +131,6 @@ public class FrameDescalificar extends JFrame{
 				}
 		    }
 		});
-		
 		
 		btnSalir.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent arg0) {
@@ -243,18 +221,7 @@ public class FrameDescalificar extends JFrame{
     	return true;
     }//fin validar numero
   
-    
-    private void borrarTiempos() {
-    	Lectura lec = new Lectura();
-		String codR="";
-		codR=lec.leerString("Ingrese C\u00F3digo Borrado");
-		if(Constantes.CODIGO_AUTORIZACION.equals(codR)){
-			CronoDAO.borrarTiempos();
-		 }//fin if
-    		
-    }//fin borrar tiempos
 
-    
     public void salir() {
     	Control.cerrarApp();
     }

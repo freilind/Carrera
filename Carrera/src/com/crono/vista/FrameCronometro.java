@@ -5,11 +5,8 @@ import java.awt.Panel;
 import java.awt.event.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.swing.*;
-
 import org.apache.log4j.Logger;
-
 import com.crono.dao.CronoDAO;
 import com.crono.util.*;
 
@@ -20,17 +17,20 @@ public class FrameCronometro implements Runnable, ActionListener{
 	private JButton btnIniciar, btnBorrar;
 	private JLabel lblTiempo, lblNumeroAtleta, lblLogo, lblBck;
 	private Thread hilo;
-	private boolean cronometroActivo;
+	private boolean cronometroActivo, unlock;
 	private Lectura lec;
 	private JTextField txfNumero;
 	private int numero;
 	private SimpleDateFormat tmpSDF;
 	private long tiempoActual, tiempoInicio;
 	
+	
 	public FrameCronometro() {
 		ctpCrono = new Panel();	
 		FramePrincipal.tbpPrincipal.addTab("Cron\u00F3metro", null,ctpCrono, null);
 		ctpCrono.setLayout(null);
+		
+		lec = new Lectura();
 		
 		lblBck=new JLabel();
 		lblBck.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_BCK+"bck.png")));
@@ -80,6 +80,8 @@ public class FrameCronometro implements Runnable, ActionListener{
 		ctpCrono.add(txfNumero);
 		ctpCrono.add(lblLogo);
 		ctpCrono.add(lblBck);
+		
+		ctpCrono.setEnabled(false);
 		
 		txfNumero.addKeyListener(new KeyAdapter() {
 			@Override
@@ -145,7 +147,6 @@ public class FrameCronometro implements Runnable, ActionListener{
 	 //Iniciar el cronometro poniendo cronometroActivo 
 	 //en verdadero para que entre en el while
 	public void iniciarCronometro(){
-		
 		if (CronoDAO.getEvento().length() > 2){
 			cronometroActivo = true;
 			btnIniciar.setEnabled(false);
@@ -159,9 +160,8 @@ public class FrameCronometro implements Runnable, ActionListener{
 	  
 	 //Esto es para parar el cronometro
 	public void pararCronometro(){
-		lec = new Lectura();
 		String codR="";
-		codR=lec.leerString("Ingrese C\u00F3digo Reinicio");
+		codR=lec.leerCodigo("Ingrese C\u00F3digo Reinicio");
 		if(codR.equals(Constantes.CODIGO_AUTORIZACION)) {
 			cronometroActivo = false;
 			txfNumero.setText("");

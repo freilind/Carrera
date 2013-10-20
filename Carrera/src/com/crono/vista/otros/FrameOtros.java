@@ -1,16 +1,13 @@
-package com.crono.vista;
+package com.crono.vista.otros;
 
 import javax.swing.*;
-
 import java.awt.BorderLayout;
-import java.awt.Frame;
 import java.awt.Panel;
-
 import org.apache.log4j.Logger;
+import com.crono.vista.FramePrincipal;
 
-public class FrameOtros extends Frame{
+public class FrameOtros{
 
-	private static final long serialVersionUID = 1L;
 	private static final Logger logger = Logger.getLogger(FrameOtros.class);
 	public static Panel ctpOtros;
 	public static JTabbedPane tbpOtros;
@@ -28,6 +25,7 @@ public class FrameOtros extends Frame{
 	private void setVisibilidad() {
 		 new FrameDescalificar();
 		 new FrameDiploma();
+		 new FrameBD();
 	} 
 
 }

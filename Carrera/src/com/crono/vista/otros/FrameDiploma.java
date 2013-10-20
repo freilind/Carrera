@@ -1,4 +1,4 @@
-package com.crono.vista;
+package com.crono.vista.otros;
 
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
@@ -64,8 +64,8 @@ public class FrameDiploma extends Thread{
 		lblLogo.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_ICONOS+"logo.png")));
 		lblLogo.setBounds(440, 61, 200, 200);
 		
-		ctpDiploma.add(btnDiploma);
-		ctpDiploma.add(btnEmail);
+		//ctpDiploma.add(btnDiploma);
+		//ctpDiploma.add(btnEmail);
 		ctpDiploma.add(btnSalir);
 		ctpDiploma.add(lblLogo);
 		ctpDiploma.add(lblBck);

@@ -5,8 +5,13 @@ import java.awt.Panel;
 import java.awt.event.*;
 import java.util.Calendar;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.swing.*;
+
 import org.apache.log4j.Logger;
+
 import com.crono.modelo.dto.AtletaDTO;
 import com.crono.modelo.administrar.usuario.*;
 import com.crono.controlador.Control;
@@ -232,6 +237,7 @@ public class FrameRegistro extends JFrame {
      * 
      */
     private void setCbxSexo() {
+    	cbxSexo.removeAllItems();
     	List<String> result = CronoDAO.getSexos();
     	logger.info(result);
 		for(String s: result)
@@ -243,7 +249,8 @@ public class FrameRegistro extends JFrame {
      * a\u00F1ade valores al combobox a\u00F1o nacimiento
      * 
      */
-    private void setCbxYearB() {	
+    private void setCbxYearB() {
+    	cbxYearB.removeAllItems();
 		Calendar cal = Calendar.getInstance();
 		cbxYearB.addItem("- ");
 		int y = cal.get(Calendar.YEAR)-5; 
@@ -274,15 +281,17 @@ public class FrameRegistro extends JFrame {
     		msg.append(Constantes.E_CEDULA);
     	}
     	
-    	if(txfTlf.getText().trim().length() < 7 || txfTlf.getText().trim().length() > 15) {
+   /* 	if(txfTlf.getText().trim().length() < 7 || txfTlf.getText().trim().length() > 15) {
     		txfTlf.setBackground(Fonts.COLOR_ERROR);
     		msg.append(Constantes.E_TELEFONO);
     	}	
     	
-    	if(txfEmail.getText().length() < 9 || txfEmail.getText().length() > 50) {
+    	Pattern p = Pattern.compile("^([0-9a-zA-Z]([_.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+([a-zA-Z]{2,9}.)+[a-zA-Z]{2,3})$");	// Establecer el patron
+    	Matcher m = p.matcher(txfEmail.getText().trim()); // Asociar el string al patron
+    	if((txfEmail.getText().trim().length() < 9 || txfEmail.getText().trim().length() > 50) && m.matches()) {
     		txfEmail.setBackground(Fonts.COLOR_ERROR);
     		msg.append(Constantes.E_EMAIL);
-    	}
+    	}*/
     	
     	if(cbxSexo.getSelectedIndex() == 0)
     		msg.append(Constantes.E_SEXO);
@@ -291,10 +300,8 @@ public class FrameRegistro extends JFrame {
     		msg.append(Constantes.E_YEARB);
     	
     	msg2 = msg.toString();
-    	if(!msg2.isEmpty()) {
-    		JOptionPane.showMessageDialog(null, msg, "ERROR", JOptionPane.ERROR_MESSAGE);
-    	}else {
-    		
+    	
+    	if(msg2.isEmpty()) {
     		if (validarCedula()) {
 				if (CronoDAO.atletaExiste(txfCedula.getText().trim())) {
 					txfCedula.setBackground(Fonts.COLOR_ERROR);
@@ -302,7 +309,12 @@ public class FrameRegistro extends JFrame {
 				}else { 
 					enviarContenido();
 				}	
-			}//fin if 
+			}//fin if 		
+    	}else {
+    		setCbxSexo(); 	
+    		setCbxYearB(); 	
+    		JOptionPane.showMessageDialog(null, msg2, "ERROR", JOptionPane.ERROR_MESSAGE);
+    		
     	}
     }//fin validar campos
     
@@ -352,8 +364,8 @@ public class FrameRegistro extends JFrame {
     	txfNombres.setText("");
     	txfApellidos.setText("");
     	txfCedula.setText("");
-    	cbxYearB.setSelectedIndex(0);
-		cbxSexo.setSelectedIndex(0);
+    	setCbxSexo(); 	
+		setCbxYearB();
 		txfTlf.setText("");
 		txfEmail.setText("");
 		rdbtnNo.setSelected(true);

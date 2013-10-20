@@ -1,4 +1,4 @@
-package com.crono.vista;
+package com.crono.vista.evento;
 
 import java.awt.Color;
 import java.awt.Panel;
@@ -22,7 +22,7 @@ public class FrameEventoValida {
 	public FrameEventoValida() {
 		ctpValida = new Panel();	
 		ctpValida.setLayout(null);
-		FrameEvento.tbpEvento.addTab("V\u00E1lida", null,ctpValida, null);
+		FrameEvento.tbpEvento.addTab("Evento", null,ctpValida, null);
 		
 		lblBck=new JLabel();
 		lblBck.setIcon(new ImageIcon(getClass().getResource(Constantes.RUTA_BCK+"bck.png")));
@@ -162,8 +162,12 @@ public class FrameEventoValida {
 		txfEvento.setText("");
 		String result = CronoDAO.getEvento();
 		
-		if (result.length() > 1)
+		if (result.length() > 1){
 			txfEvento.setText(result);
+			FrameEventoInscripcion.txfEvento.setText(result);
+		}else{
+			FrameEventoInscripcion.txfEvento.setText("");
+		}
 		
 	}// fin metodo getTxfEvento
 	
@@ -181,14 +185,12 @@ public class FrameEventoValida {
 	}//fin validar campos
 	
 	
-	private void registrarEvento() {
-		
+	private void registrarEvento() {	
 		if(CronoDAO.registrarEvento(txfNombre.getText())) {
     		JOptionPane.showMessageDialog(null, "Evento Registrado.");
 		    borrarContenido();
 		    getTxfEvento();
-    	}
-		  			
+    	}	  			
 	}//fin enviar contenido
 	 
 
@@ -200,7 +202,7 @@ public class FrameEventoValida {
 	private void deshabilitarEvento() {
 		lec = new Lectura();
 		 String codR="";
-		 codR=lec.leerString("Ingrese C\u00F3digo Autorizaci\u00F3n");
+		 codR=lec.leerCodigo("Ingrese C\u00F3digo Autorizaci\u00F3n");
 		 if(Constantes.CODIGO_AUTORIZACION.equals(codR)) {
 			if(txfEvento.getText().length() > 2) {
 				enviarDesh();
@@ -213,8 +215,7 @@ public class FrameEventoValida {
 	}//fin deshabilitarEvento
 
 
-	private void enviarDesh() {
-		
+	private void enviarDesh() {	
 		if(CronoDAO.deshabilitarEvento(txfEvento.getText())) {
     		JOptionPane.showMessageDialog(null, "Evento Deshabilitado.");
     		getTxfEvento();

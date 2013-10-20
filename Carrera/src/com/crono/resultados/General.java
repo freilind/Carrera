@@ -18,7 +18,7 @@ public class General extends Pdf{
 	private static float anchoRegistro[]={40, 180,190, 90, 145, 120, 160};
 	
 	public General(){
-		super("pdf/ResultadoGeneral.pdf", "Resultado General", titulo, anchoRegistro, ancho);
+		super("ResultadoGeneral.pdf", "Resultado General", titulo, anchoRegistro, ancho);
 		
 		try {
 			document.open(); 
