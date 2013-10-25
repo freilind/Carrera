@@ -15,7 +15,7 @@ public class General extends Pdf{
 	private static final Logger logger = Logger.getLogger(General.class);
     private static String titulo[]={" # "," Nombres"," Apellidos"," Num"," Categor\u00EDa"," G\u00E9nero"," Tiempo"};
     private static float ancho[]={250, 500, 160};
-	private static float anchoRegistro[]={40, 180,190, 90, 145, 120, 160};
+	private static float anchoRegistro[]={40, 180,180, 90, 160, 130, 150};
 	
 	public General(){
 		super("ResultadoGeneral.pdf", "Resultado General", titulo, anchoRegistro, ancho);

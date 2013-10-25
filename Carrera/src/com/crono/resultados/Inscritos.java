@@ -15,7 +15,7 @@ public class Inscritos extends Pdf{
 	
 	private static final Logger logger = Logger.getLogger(Inscritos.class);	
     private static String titulo[]={" Nombres"," Apellidos"," C\u00E9dula"," N\u00FAmero"," Categor\u00EDa"," G\u00E9nero"};
-	private static float anchoRegistro[]={180, 190, 140,120, 150, 130};
+	private static float anchoRegistro[]={180, 190, 140,120, 160, 130};
 	private static float ancho[]={250, 500, 160};
 	
 	public Inscritos(){

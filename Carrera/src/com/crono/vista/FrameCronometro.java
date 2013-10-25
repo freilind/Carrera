@@ -17,7 +17,7 @@ public class FrameCronometro implements Runnable, ActionListener{
 	private JButton btnIniciar, btnBorrar;
 	private JLabel lblTiempo, lblNumeroAtleta, lblLogo, lblBck;
 	private Thread hilo;
-	private boolean cronometroActivo, unlock;
+	private boolean cronometroActivo;
 	private Lectura lec;
 	private JTextField txfNumero;
 	private int numero;
@@ -81,7 +81,6 @@ public class FrameCronometro implements Runnable, ActionListener{
 		ctpCrono.add(lblLogo);
 		ctpCrono.add(lblBck);
 		
-		ctpCrono.setEnabled(false);
 		
 		txfNumero.addKeyListener(new KeyAdapter() {
 			@Override

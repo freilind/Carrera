@@ -16,7 +16,7 @@ public class Masculino extends Pdf {
 	private static final Logger logger = Logger.getLogger(Masculino.class);
     private static String titulo[]={" # "," Nombres"," Apellidos"," Num", " Categor\u00EDa", " Tiempo"};
     private static float ancho[]={250, 500, 160};
-	private static float anchoRegistro[]={40, 180,190, 90, 145, 160};
+	private static float anchoRegistro[]={40, 180,180, 90, 160, 150};
 	
 	public Masculino() {
 		super("ResultadoMasculino.pdf", "Resultado Masculino", titulo, anchoRegistro, ancho);
