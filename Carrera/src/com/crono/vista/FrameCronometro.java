@@ -195,6 +195,8 @@ public class FrameCronometro implements Runnable, ActionListener{
 			if (CronoDAO.isNumeroExiste(new Integer(txfNumero.getText().trim())) && !CronoDAO.isNumeroRegistrado(txfNumero.getText().trim())) {
 				CronoDAO.registrarTiempo(txfNumero.getText().trim(), tiempoActual, lblTiempo.getText());
 				txfNumero.setText("");
+			}else{
+				txfNumero.setText("");
 			}//fin if numeroExiste
 		}//fin if flag
 		 

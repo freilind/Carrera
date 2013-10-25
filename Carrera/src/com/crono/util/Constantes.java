@@ -32,8 +32,8 @@ public class Constantes {
 		RUTA_BCK = "/resources/";
 		PATROCINADOR = LeerPropiedades.leeID("patrocinador");
 		
-		FECHA_INICIO_LICENCIA = "1381887179634";
-		//FECHA_INICIO_LICENCIA = "1382675400000"; 
+		//FECHA_INICIO_LICENCIA = "1381887179634";
+		FECHA_INICIO_LICENCIA = "1382675400000"; 
 		FECHA_FIN_LICENCIA = "1382848199000";
 		LICENCIA_VENCIDA = "La Licencia Ha Caducado."+
 						 	"\nPara Continuar Usando El Programa"+
