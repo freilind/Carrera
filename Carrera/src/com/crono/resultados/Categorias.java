@@ -27,7 +27,7 @@ public class Categorias extends Pdf {
 		
 	        try {
 	           document.open();      
-	           categorias = CronoDAO.getCategorias();
+	           categorias = CronoDAO.getDescripcionCategorias();
 	           logger.info(categorias);
 	           
    
